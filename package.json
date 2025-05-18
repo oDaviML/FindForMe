@@ -1,0 +1,14 @@
+{
+	"name": "findforme",
+	"version": "1.0.0",
+	"scripts": {
+		"start": "json-server --watch db/db.json --port 3000",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"json-server": "^0.17.4"
+	},
+	"devDependencies": {
+		"prettier": "^3.5.3"
+	}
+}
