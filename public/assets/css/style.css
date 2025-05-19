@@ -1,31 +1,96 @@
+:root {
+  --primary-color: #ee710a;
+  --secondary-color: #0b2a41;
+  --background-color: #f8f9fa;
+  --surface-color: #fff;
+  --border-color: #dee2e6;
+  --text-primary-color: #212529;
+  --text-secondary-color: #0b2a41;
+}
+
+/* ----- ESTILOS GERAIS E BODY ----- */
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--background-color);
 }
 
+/* ----- HEADER E NAVEGAÇÃO ----- */
 .navbar {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--surface-color); /* Adicionado para consistência */
 }
 
+/* ----- CONTEÚDO PRINCIPAL ----- */
 .content-wrapper {
   flex-grow: 1;
   padding: 20px;
 }
 
 .content-card {
-  border: 2px solid #dee2e6;
+  border: 2px solid var(--border-color);
   border-radius: 15px;
   height: 100%;
   padding: 15px;
+  background-color: var(--surface-color);
 }
 
 .page-title {
   font-size: 1.5rem;
   font-weight: 500;
+  color: var(--text-primary-color); /* Adicionado para consistência */
 }
 
 .page-description {
-  color: #6c757d;
+  color: var(--text-secondary-color);
   font-size: 0.9rem;
+}
+
+/* ----- MENU DE OPÇÕES ----- */
+.menu-item {
+  background-color: var(--surface-color);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-primary-color);
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.menu-item i {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  color: var(--text-secondary-color);
+}
+
+.menu-item-content {
+  flex: 1;
+}
+
+.menu-item-title {
+  font-weight: 500;
+  margin-bottom: 2px;
+  font-size: 1rem;
+  color: var(--text-primary-color); /* Adicionado para consistência */
+}
+
+.menu-item-description {
+  color: var(--text-secondary-color);
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+.menu-divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 10px 0;
 }
