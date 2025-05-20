@@ -1,0 +1,209 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "João Silva",
+      "email": "joao@example.com",
+      "phone": "11987654321",
+      "createdAt": "2025-05-01T10:00:00.000Z",
+      "updatedAt": "2025-05-01T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Maria Souza",
+      "email": "maria@example.com",
+      "phone": "11912345678",
+      "createdAt": "2025-05-02T14:30:00.000Z",
+      "updatedAt": "2025-05-02T14:30:00.000Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Documentos",
+      "createdAt": "2025-04-01T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Eletrônicos",
+      "createdAt": "2025-04-01T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Roupas e Acessórios",
+      "createdAt": "2025-04-01T10:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Material Escolar",
+      "createdAt": "2025-04-01T10:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "name": "Outros",
+      "createdAt": "2025-04-01T10:00:00.000Z"
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "name": "Biblioteca",
+      "description": "Biblioteca central do campus",
+      "createdAt": "2025-04-01T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Refeitório",
+      "description": "Área de alimentação principal",
+      "createdAt": "2025-04-01T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Estacionamento",
+      "description": "Estacionamento principal",
+      "createdAt": "2025-04-01T10:00:00.000Z"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Carteira com documentos",
+      "description": "Carteira preta com CNH e cartões de crédito",
+      "locationId": 1,
+      "categoryId": 1,
+      "status": "found",
+      "photoUrl": "/photos/item1.jpg",
+      "reportedBy": 1,
+      "foundAt": "2025-05-10T15:30:00.000Z",
+      "createdAt": "2025-05-10T16:00:00.000Z",
+      "updatedAt": "2025-05-10T16:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Smartphone Samsung",
+      "description": "Celular Samsung Galaxy S25 preto com capa vermelha",
+      "locationId": 2,
+      "categoryId": 2,
+      "status": "lost",
+      "photoUrl": "/photos/item2.jpg",
+      "reportedBy": 2,
+      "lostAt": "2025-05-11T12:00:00.000Z",
+      "createdAt": "2025-05-11T14:00:00.000Z",
+      "updatedAt": "2025-05-11T14:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Caderno de anotações",
+      "description": "Caderno espiral azul com anotações de matemática",
+      "locationId": 1,
+      "categoryId": 4,
+      "status": "found",
+      "photoUrl": "/photos/item3.jpg",
+      "reportedBy": 1,
+      "foundAt": "2025-05-12T09:00:00.000Z",
+      "createdAt": "2025-05-12T09:30:00.000Z",
+      "updatedAt": "2025-05-12T09:30:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Guarda-chuva",
+      "description": "Guarda-chuva preto automático",
+      "locationId": 3,
+      "categoryId": 5,
+      "status": "returned",
+      "photoUrl": "/photos/item4.jpg",
+      "reportedBy": 1,
+      "foundAt": "2025-05-09T17:00:00.000Z",
+      "claimedBy": 2,
+      "returnedAt": "2025-05-13T10:15:00.000Z",
+      "createdAt": "2025-05-09T17:30:00.000Z",
+      "updatedAt": "2025-05-13T10:15:00.000Z"
+    }
+  ],
+  "itemHistory": [
+    {
+      "id": 1,
+      "itemId": 1,
+      "status": "found",
+      "notes": "Item encontrado na biblioteca e registrado no sistema",
+      "changedBy": 1,
+      "createdAt": "2025-05-10T16:00:00.000Z" 
+    },
+    {
+      "id": 2,
+      "itemId": 2,
+      "status": "lost",
+      "notes": "Item reportado como perdido",
+      "changedBy": 2,
+      "createdAt": "2025-05-11T14:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "itemId": 3,
+      "status": "found",
+      "notes": "Item encontrado na biblioteca",
+      "changedBy": 1,
+      "createdAt": "2025-05-12T09:30:00.000Z"
+    },
+    {
+      "id": 4,
+      "itemId": 4,
+      "status": "found",
+      "notes": "Item encontrado no estacionamento",
+      "changedBy": 1,
+      "createdAt": "2025-05-09T17:30:00.000Z"
+    },
+    {
+      "id": 5,
+      "itemId": 4,
+      "status": "claimed",
+      "notes": "Item identificado pelo dono",
+      "changedBy": 2,
+      "createdAt": "2025-05-13T10:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "itemId": 4,
+      "status": "returned",
+      "notes": "Item devolvido ao proprietário",
+      "changedBy": 1,
+      "createdAt": "2025-05-13T10:15:00.000Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 2,
+      "title": "Item semelhante encontrado",
+      "message": "Um smartphone semelhante ao que você perdeu foi encontrado. Verifique os detalhes.",
+      "relatedItemId": 2,
+      "read": false,
+      "createdAt": "2025-05-12T10:30:00.000Z"
+    }
+  ],
+  "reports": [
+    {
+      "id": 1,
+      "title": "Relatório mensal de itens - Maio 2025",
+      "totalItems": 4,
+      "foundItems": 3,
+      "lostItems": 1,
+      "returnedItems": 1,
+      "pendingItems": 3,
+      "generatedBy": 1,
+      "createdAt": "2025-05-15T09:00:00.000Z"
+    }
+  ],
+  "abuseReports": [
+    {
+      "id": 1,
+      "itemId": 3,
+      "reportedBy": 2,
+      "reason": "Este item foi entregue à pessoa errada",
+      "description": "O caderno foi entregue sem verificar a identidade do solicitante",
+      "status": "pending",
+      "createdAt": "2025-05-14T11:00:00.000Z",
+      "updatedAt": "2025-05-14T11:00:00.000Z"
+    }
+  ]
+}
