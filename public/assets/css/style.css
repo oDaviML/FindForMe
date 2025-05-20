@@ -19,7 +19,7 @@ body {
 /* ----- HEADER E NAVEGAÇÃO ----- */
 .navbar {
   border-bottom: 1px solid var(--border-color);
-  background-color: var(--surface-color); /* Adicionado para consistência */
+  background-color: var(--surface-color);
 }
 
 /* ----- CONTEÚDO PRINCIPAL ----- */
@@ -39,7 +39,7 @@ body {
 .page-title {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--text-primary-color); /* Adicionado para consistência */
+  color: var(--text-primary-color);
 }
 
 .page-description {
@@ -80,7 +80,7 @@ body {
   font-weight: 500;
   margin-bottom: 2px;
   font-size: 1rem;
-  color: var(--text-primary-color); /* Adicionado para consistência */
+  color: var(--text-primary-color);
 }
 
 .menu-item-description {
