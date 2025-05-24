@@ -121,6 +121,13 @@
         color: #444;
         margin-bottom: 0.2rem;
       }
+      .item-card.found {
+        border: 2px solid #3bb54a;
+        box-shadow: 0 2px 12px #3bb54a22;
+      }
+      .item-card.found h3 {
+        color: #3bb54a;
+      }
       @media (max-width: 900px) {
         main {
           padding: 1rem;
@@ -372,16 +379,17 @@
               dateStyle: 'short',
               timeStyle: 'short',
             });
+            const foundClass = item.status === 'found' ? 'found' : '';
             return `
-          <div class="item-card">
-            <img src="${item.photoUrl}" alt="${item.name}" onerror="this.src='./assets/img/placeholder.svg'">
-            <h3>${item.name}</h3>
-            <div class="item-meta"><b>Categoria:</b> ${cat}</div>
-            <div class="item-meta"><b>Local:</b> ${loc}</div>
-            <div class="item-date"><b>Encontrado em:</b> ${date}</div>
-            <div class="item-desc">${item.description}</div>
-          </div>
-        `;
+      <div class="item-card ${foundClass}">
+        <img src="${item.photoUrl}" alt="${item.name}" onerror="this.src='./assets/img/placeholder.svg'">
+        <h3>${item.name}</h3>
+        <div class="item-meta"><b>Categoria:</b> ${cat}</div>
+        <div class="item-meta"><b>Local:</b> ${loc}</div>
+        <div class="item-date"><b>Encontrado em:</b> ${date}</div>
+        <div class="item-desc">${item.description}</div>
+      </div>
+    `;
           })
           .join('');
       }
