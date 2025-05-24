@@ -1,0 +1,19 @@
+body {
+  background-color: #fff;
+}
+.login-container,
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  padding: 50px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.btn-dark {
+  width: 100%;
+}
