@@ -9,10 +9,11 @@
 
 
         {
-            "type": "msedge",
+            "type": "chrome",
+            "url": "file://${workspaceFolder}/public/index.html",
             "request": "launch",
             "name": "Open index.html",
-            "file": "/workspaces/FindForMe/public/index.html"
+            "file": "${workspaceFolder}/public/index.html"
         }
     ]
 }

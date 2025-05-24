@@ -125,21 +125,7 @@
     <div class="container content-wrapper">
       <div class="row mb-3">
         <div class="col">
-          <h1 class="page-title">Menu Principal</h1>
-          <p class="page-description">Escolha uma opção para continuar</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="content-card">
-            <div class="d-flex justify-content-center align-items-center h-100">
-              <p class="text-center">
-                Utilize o menu hambúrguer no canto superior esquerdo para
-                acessar as opções
-              </p>
-            </div>
-          </div>
+          <h1 class="page-title">Itens relevantes</h1>
         </div>
       </div>
 
@@ -188,13 +174,12 @@
         }
       </style>
       <div class="row g-4 mb-3" id="recent-found-items">
-        <h4 class="fw-bold mb-3">Últimos itens encontrados</h4>
         <div class="col-12 mb-3">
           <div class="input-group">
             <span class="input-group-text bg-white border-end-0">
               <i class="ri-search-line"></i>
             </span>
-            <input type="text" class="form-control border-start-0" id="search-found-items" placeholder="Pesquisar itens encontrados...">
+            <input type="text" class="form-control border-start-0" id="search-found-items" placeholder="Pesquisar itens relevantes...">
           </div>
         </div>
         <div class="row g-4" id="found-items-list">
@@ -202,40 +187,29 @@
         </div>
       </div>
       <script>
-        // Dados dos itens encontrados (do db.json)
-        const foundItems = [
-          {
-            id: 3,
-            name: "Caderno de anotações",
-            description: "Caderno espiral azul com anotações de matemática",
-            location: "Biblioteca",
-            photoUrl: "/photos/item3.jpg",
-            foundAt: "2025-05-12T09:00:00.000Z"
-          },
-          {
-            id: 1,
-            name: "Carteira com documentos",
-            description: "Carteira preta com CNH e cartões de crédito",
-            location: "Biblioteca",
-            photoUrl: "/photos/item1.jpg",
-            foundAt: "2025-05-10T15:30:00.000Z"
-          },
-          {
-            id: 4,
-            name: "Guarda-chuva",
-            description: "Guarda-chuva preto automático",
-            location: "Estacionamento",
-            photoUrl: "/photos/item4.jpg",
-            foundAt: "2025-05-09T17:00:00.000Z"
+        // Busca itens relevantes diretamente do db.json via json-server
+        let foundItems = [];
+        async function fetchFoundItems() {
+          try {
+            const res = await fetch('http://localhost:3000/items?status=found');
+            const items = await res.json();
+            const locRes = await fetch('http://localhost:3000/locations');
+            const locations = await locRes.json();
+            foundItems = items.map(item => ({
+              ...item,
+              location: locations.find(l => l.id === item.locationId)?.name || 'Desconhecido'
+            }));
+            renderFoundItems();
+          } catch (e) {
+            document.getElementById('found-items-list').innerHTML = '<div class="col-12 text-center text-danger py-5">Erro ao carregar itens do servidor.</div>';
           }
-        ];
+        }
         function formatDate(dateStr) {
           const date = new Date(dateStr);
           return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
         }
         function renderFoundItems(filter = "") {
           const list = document.getElementById('found-items-list');
-          // Ordena por data de encontrado (mais recente primeiro)
           let filtered = foundItems.slice().sort((a, b) => new Date(b.foundAt) - new Date(a.foundAt));
           if (filter) {
             const f = filter.toLowerCase();
@@ -268,7 +242,7 @@
           `).join("");
         }
         document.addEventListener('DOMContentLoaded', function() {
-          renderFoundItems();
+          fetchFoundItems();
           document.getElementById('search-found-items').addEventListener('input', function() {
             renderFoundItems(this.value);
           });
