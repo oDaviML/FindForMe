@@ -4,6 +4,7 @@
       "id": 1,
       "name": "João Silva",
       "email": "joao@example.com",
+      "password": "linkinpark123",
       "phone": "11987654321",
       "createdAt": "2025-05-01T10:00:00.000Z",
       "updatedAt": "2025-05-01T10:00:00.000Z"
@@ -12,6 +13,7 @@
       "id": 2,
       "name": "Maria Souza",
       "email": "maria@example.com",
+      "password": "menosehmais123",
       "phone": "11912345678",
       "createdAt": "2025-05-02T14:30:00.000Z",
       "updatedAt": "2025-05-02T14:30:00.000Z"
