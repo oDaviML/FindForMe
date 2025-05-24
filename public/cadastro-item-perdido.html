@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar Item Perdido - Achados e Perdidos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #fafafa; }
+    header {
+      background: #e0e0e0;
+      padding: 0.7rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      font-size: 1.1rem;
+      margin: 0;
+      font-weight: 500;
+      color: #333;
+      flex: 1;
+      text-align: center;
+    }
+    header .icon {
+      font-size: 1.3rem;
+      color: #888;
+      cursor: pointer;
+    }
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #0001;
+      padding: 2rem 2.5rem;
+    }
+    .subtitle {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
+    .form-grid {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .form-section {
+      flex: 1 1 260px;
+      min-width: 240px;
+    }
+    .form-section label {
+      display: block;
+      font-size: 0.97rem;
+      color: #444;
+      margin-bottom: 0.3rem;
+      margin-top: 1.1rem;
+    }
+    .form-section input,
+    .form-section select,
+    .form-section textarea {
+      width: 100%;
+      padding: 0.5rem 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      background: #fafbfc;
+      margin-bottom: 0.2rem;
+    }
+    .form-section textarea {
+      resize: vertical;
+      min-height: 60px;
+      max-height: 120px;
+    }
+    .image-section {
+      flex: 1 1 220px;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+    .image-preview {
+      width: 180px;
+      height: 180px;
+      background: #e0e0e0;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
+      object-fit: cover;
+    }
+    .image-section label {
+      font-size: 0.97rem;
+      color: #444;
+      margin-bottom: 0.3rem;
+      margin-top: 0.7rem;
+      text-align: left;
+      width: 100%;
+    }
+    .submit-btn {
+      margin-top: 2rem;
+      padding: 0.8rem 2.2rem;
+      background: #2d3e50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: block;
+    }
+    .submit-btn:hover {
+      background: #1a2533;
+    }
+    @media (max-width: 900px) {
+      main { padding: 1rem; }
+      .form-grid { flex-direction: column; gap: 1.5rem; }
+      .image-section { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="icon">&#9776;</span>
+    <h1>Registrar item perdido</h1>
+    <span class="icon">&#9432;</span>
+  </header>
+  <main>
+    <h2 style="font-size:1.3rem; margin-bottom:0.2rem;">Registrar Item Perdido</h2>
+    <div class="subtitle">Preencha os dados abaixo para registrar o item que você perdeu</div>
+    <form id="lost-item-form" autocomplete="off">
+      <div class="form-grid">
+        <div class="form-section">
+          <label for="title">Título</label>
+          <input type="text" id="title" name="title" placeholder="Ex: Mochila preta" required>
+
+          <label for="category">Categoria</label>
+          <select id="category" name="category" required>
+            <option value="">Selecione</option>
+          </select>
+
+          <label for="description">Descrição</label>
+          <textarea id="description" name="description" placeholder="Descreva o item perdido" required></textarea>
+        </div>
+        <div class="form-section">
+          <label for="lostAt">Data e Hora</label>
+          <input type="datetime-local" id="lostAt" name="lostAt" required>
+
+          <label for="location">Local</label>
+          <select id="location" name="location" required>
+            <option value="">Selecione</option>
+          </select>
+        </div>
+        <div class="image-section">
+          <div class="image-preview" id="imagePreview">Imagem</div>
+          <label for="photo">Escolha uma imagem</label>
+          <input type="file" id="photo" name="photo" accept="image/*">
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Registrar</button>
+    </form>
+  </main>
+  <script>
+    // Dados reais do db.json
+    const categories = [
+      { id: 1, name: "Documentos" },
+      { id: 2, name: "Eletrônicos" },
+      { id: 3, name: "Roupas e Acessórios" },
+      { id: 4, name: "Material Escolar" },
+      { id: 5, name: "Outros" }
+    ];
+    const locations = [
+      { id: 1, name: "Biblioteca" },
+      { id: 2, name: "Refeitório" },
+      { id: 3, name: "Estacionamento" }
+    ];
+
+    // Preenche categorias e locais
+    const catSel = document.getElementById('category');
+    categories.forEach(cat => {
+      const opt = document.createElement('option');
+      opt.value = cat.id;
+      opt.textContent = cat.name;
+      catSel.appendChild(opt);
+    });
+    const locSel = document.getElementById('location');
+    locations.forEach(loc => {
+      const opt = document.createElement('option');
+      opt.value = loc.id;
+      opt.textContent = loc.name;
+      locSel.appendChild(opt);
+    });
+
+    // Preview da imagem
+    const photoInput = document.getElementById('photo');
+    const imagePreview = document.getElementById('imagePreview');
+    photoInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          imagePreview.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">`;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        imagePreview.textContent = 'Imagem';
+      }
+    });
+
+    // Simula envio do formulário
+    document.getElementById('lost-item-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Item perdido registrado com sucesso!');
+      this.reset();
+      imagePreview.textContent = 'Imagem';
+    });
+  </script>
+</body>
+</html>
