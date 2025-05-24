@@ -127,7 +127,7 @@
       "status": "found",
       "notes": "Item encontrado na biblioteca e registrado no sistema",
       "changedBy": 1,
-      "createdAt": "2025-05-10T16:00:00.000Z" 
+      "createdAt": "2025-05-10T16:00:00.000Z"
     },
     {
       "id": 2,
@@ -184,14 +184,73 @@
   "reports": [
     {
       "id": 1,
-      "title": "Relatório mensal de itens - Maio 2025",
-      "totalItems": 4,
-      "foundItems": 3,
-      "lostItems": 1,
-      "returnedItems": 1,
-      "pendingItems": 3,
-      "generatedBy": 1,
-      "createdAt": "2025-05-15T09:00:00.000Z"
+      "month": "2025-01",
+      "createdAt": "2025-01-15T09:00:00.000Z",
+      "lostItems": 10,
+      "foundItems": 12,
+      "returnedItems": 6,
+      "pendingItems": 4,
+      "totalItems": 22
+    },
+    {
+      "id": 2,
+      "month": "2025-02",
+      "createdAt": "2025-02-15T09:00:00.000Z",
+      "lostItems": 12,
+      "foundItems": 13,
+      "returnedItems": 7,
+      "pendingItems": 6,
+      "totalItems": 25
+    },
+    {
+      "id": 3,
+      "month": "2025-03",
+      "createdAt": "2025-03-15T09:00:00.000Z",
+      "lostItems": 14,
+      "foundItems": 14,
+      "returnedItems": 8,
+      "pendingItems": 4,
+      "totalItems": 28
+    },
+    {
+      "id": 4,
+      "month": "2025-04",
+      "createdAt": "2025-04-15T09:00:00.000Z",
+      "lostItems": 16,
+      "foundItems": 15,
+      "returnedItems": 6,
+      "pendingItems": 6,
+      "totalItems": 31
+    },
+    {
+      "id": 5,
+      "month": "2025-05",
+      "createdAt": "2025-05-15T09:00:00.000Z",
+      "lostItems": 18,
+      "foundItems": 16,
+      "returnedItems": 7,
+      "pendingItems": 4,
+      "totalItems": 34
+    },
+    {
+      "id": 6,
+      "month": "2025-06",
+      "createdAt": "2025-06-15T09:00:00.000Z",
+      "lostItems": 20,
+      "foundItems": 17,
+      "returnedItems": 8,
+      "pendingItems": 6,
+      "totalItems": 37
+    },
+    {
+      "id": 7,
+      "month": "2025-07",
+      "createdAt": "2025-07-15T09:00:00.000Z",
+      "lostItems": 22,
+      "foundItems": 18,
+      "returnedItems": 7,
+      "pendingItems": 4,
+      "totalItems": 40
     }
   ],
   "abuseReports": [
