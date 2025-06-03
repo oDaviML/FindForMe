@@ -62,6 +62,64 @@
   border-radius: 8px;
   padding: 0.75rem;
   margin-top: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#item-author:hover {
+  background-color: #f0f0f0;
+}
+
+/* Estilo para o modal de contato */
+#contactModal .modal-content {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#contactModal .modal-header {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 1.25rem 1.5rem;
+}
+
+#contactModal .modal-body {
+  padding: 1.5rem;
+}
+
+#contactModal .modal-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 1rem 1.5rem;
+}
+
+#contactModal .author-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  background-color: #e9ecef;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  border-radius: 50%;
+}
+
+#contactModal .alert {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+#contactModal .btn-close:focus {
+  box-shadow: none;
+}
+
+/* Estilo para o botão de email */
+#emailButton {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .author-avatar {
@@ -93,7 +151,7 @@
   .item-details {
     margin-top: 1.5rem;
   }
-  
+
   .item-image {
     max-height: 400px;
   }
@@ -103,7 +161,7 @@
   .item-image {
     max-height: 350px;
   }
-  
+
   .item-details {
     padding: 1.5rem;
   }
@@ -111,8 +169,14 @@
 
 /* Animações */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .item-details {

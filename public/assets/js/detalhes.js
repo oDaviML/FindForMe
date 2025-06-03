@@ -6,6 +6,12 @@ const STATUS_LABELS = {
   returned: 'Devolvido',
 };
 
+// Elementos DOM
+const $contactModal = new bootstrap.Modal(
+  document.getElementById('contactModal')
+);
+let currentItem = null;
+
 // Obter o ID do item da URL
 function getItemIdFromUrl() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -15,24 +21,23 @@ function getItemIdFromUrl() {
 // Carregar os detalhes do item
 async function loadItemDetails(itemId) {
   try {
-    // Fazer requisições em paralelo
-    const [itemResponse, categoriesResponse, locationsResponse, usersResponse] =
-      await Promise.all([
-        $.get(`${API_BASE_URL}/items/${itemId}`),
-        $.get(`${API_BASE_URL}/categories`),
-        $.get(`${API_BASE_URL}/locations`),
-        $.get(`${API_BASE_URL}/users`),
-      ]);
+    // Carregar item com os relacionamentos
+    const [item, user] = await Promise.all([
+      $.get(
+        `${API_BASE_URL}/items/${itemId}?_expand=category&_expand=location`
+      ),
+      // Primeiro pega o item para obter o ID do usuário
+      (async () => {
+        const itemData = await $.get(`${API_BASE_URL}/items/${itemId}`);
+        if (itemData.reportedBy) {
+          return $.get(`${API_BASE_URL}/users/${itemData.reportedBy}`);
+        }
+        return null;
+      })(),
+    ]);
 
-    const item = itemResponse;
-    const categories = categoriesResponse;
-    const locations = locationsResponse;
-    const users = usersResponse;
-
-    // Encontrar categoria, localização e usuário do item
-    const category = categories.find((cat) => cat.id === item.categoryId);
-    const location = locations.find((loc) => loc.id === item.locationId);
-    const author = users.find((user) => user.id === item.reportedBy);
+    currentItem = item;
+    currentItem.reportedByUser = user; // Armazena os dados completos do usuário
 
     // Formatar a data
     const date = new Date(item.createdAt);
@@ -47,24 +52,24 @@ async function loadItemDetails(itemId) {
     // Preencher os dados na página
     $('#item-name').text(item.name);
     $('#item-description').text(item.description || 'Sem descrição fornecida.');
-    $('#item-category').text(category ? category.name : 'Não especificada');
-    $('#item-location').text(location ? location.name : 'Local desconhecido');
+    $('#item-category').text(item.category?.name || 'Não especificada');
+    $('#item-location').text(item.location?.name || 'Local desconhecido');
     $('#item-date').text(formattedDate);
-
-    // Preencher informações do autor
-    if (author) {
-      $('#author-name').text(author.name || 'Usuário anônimo');
-      $('#author-email').text(author.email || '');
-    } else {
-      $('#author-name').text('Usuário anônimo');
-      $('#author-email').text('');
-    }
 
     // Configurar a imagem
     if (item.photoUrl) {
       $('#item-image').attr('src', item.photoUrl);
     } else {
       $('#item-image').attr('src', './assets/img/placeholder.svg');
+    }
+
+    // Preencher informações do autor
+    if (user) {
+      $('#author-name').text(user.name || 'Usuário anônimo');
+      $('#author-email').text(user.email || '');
+    } else {
+      $('#author-name').text('Usuário anônimo');
+      $('#author-email').text('');
     }
 
     // Configurar o status
@@ -91,20 +96,46 @@ function showError() {
   $('#error-message').removeClass('d-none');
 }
 
-// Manipular o clique no botão de reivindicar item
+// Reivindicar
 function handleClaimItem() {
-  // Aqui você pode adicionar a lógica para reivindicar o item
   alert('Funcionalidade de reivindicação será implementada em breve!');
 }
 
-// Função para lidar com o clique no botão de contato
-function handleContactButton() {
-  const email = $('#author-email').text().trim();
-  if (email) {
-    window.location.href = `mailto:${email}?subject=Encontrei seu item no FindForMe`;
-  } else {
-    alert('O usuário não disponibilizou um e-mail para contato.');
+// Mostrar informações de contato no modal
+function showContactInfo(user) {
+  if (!user) {
+    alert('Não foi possível identificar o dono deste item.');
+    return;
   }
+
+  const $modalBody = $('#contactModalBody');
+  const $emailButton = $('#emailButton');
+
+  // Atualiza o modal com as informações do usuário
+  $modalBody.html(`
+    <div class="text-center mb-4">
+      <div class="author-avatar mx-auto mb-3">
+        <i class="ri-user-fill"></i>
+      </div>
+      <h5 class="mb-1">${user.name || 'Usuário anônimo'}</h5>
+      ${user.email ? `<p class="text-muted mb-2">${user.email}</p>` : ''}
+      ${user.phone ? `<p class="mb-0"><i class="ri-phone-line me-2"></i>${user.phone}</p>` : ''}
+    </div>
+  `);
+
+  // Configura o botão de email se disponível
+  if (user.email) {
+    $emailButton
+      .attr(
+        'href',
+        `mailto:${user.email}?subject=Encontrei seu item no FindForMe`
+      )
+      .removeClass('d-none');
+  } else {
+    $emailButton.addClass('d-none');
+  }
+
+  $contactModal.show();
 }
 
 // Inicialização da página
@@ -116,9 +147,18 @@ $(document).ready(() => {
     return;
   }
 
-  // Configurar eventos de clique
+  // Reivindicar
   $('#claim-item').on('click', handleClaimItem);
-  $('#contact-button').on('click', handleContactButton);
+
+  // Contato
+  $('#contact-button').on('click', (e) => {
+    e.preventDefault();
+    if (currentItem?.reportedByUser) {
+      showContactInfo(currentItem.reportedByUser);
+    } else {
+      alert('Não foi possível identificar o dono deste item.');
+    }
+  });
 
   // Carregar os detalhes do item
   loadItemDetails(itemId);
