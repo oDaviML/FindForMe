@@ -225,19 +225,18 @@
           }
           list.innerHTML = filtered.map((item, idx) => `
             <div class=\"col-lg-4 col-md-6 col-12\">
-              <div class=\"item-card h-100\">
-                <img src=\"${item.photoUrl}\" alt=\"${item.name}\" class=\"item-img\" />
+              <div class=\"item-card h-100\" onclick=\"window.location.href='detalhes.html?id=${item.id}'\" style=\"cursor: pointer;\">
+                <img src=\"${item.photoUrl}\" alt=\"${item.name}\" class=\"item-img\" onerror=\"this.src='./assets/img/placeholder.jpg'\" />
                 <div class=\"item-card-body\">
                   <div class=\"item-title\">${item.name}</div>
                   <div class=\"item-desc\">${item.description}</div>
                   <div class=\"mt-2 text-muted\">
-                    Local: ${item.location}<br>
-                    Encontrado em: <span>${formatDate(item.foundAt)}</span><br>
-                    Status: <span class=\"badge bg-success\">Encontrado</span>
+                    <div><i class=\"ri-map-pin-line\"></i> ${item.location}</div>
+                    <div><i class=\"ri-calendar-line\"></i> ${formatDate(item.foundAt)}</div>
+                    <div><span class=\"badge bg-success\"><i class=\"ri-check-line\"></i> Encontrado</span></div>
                   </div>
                 </div>
               </div>
-              <div class=\"item-divider\"></div>
             </div>
           `).join("");
         }
