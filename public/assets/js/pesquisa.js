@@ -207,70 +207,18 @@ function renderItems() {
   }
 
   // Adicionar evento de clique nos cards
-  $('.item-card').on('click', function () {
-    const itemId = Number.parseInt($(this).data('id'), 10);
-    const item = items.find((i) => i.id === itemId);
+  $('.item-card').on('click', function() {
+    const itemId = $(this).data('id');
+    const item = items.find(i => i.id === itemId);
     if (item) {
       showItemDetails(item);
     }
   });
 }
 
-// Mostra os detalhes do item em um modal
+// Mostra os detalhes do item em uma nova página
 function showItemDetails(item) {
-  const category = categories.find((c) => c.id === item.categoryId) || {};
-  const location = locations.find((l) => l.id === item.locationId) || {};
-  const statusClass = `badge-${item.status}`;
-  const statusLabel = STATUS_LABELS[item.status] || item.status;
-
-  const formattedDate = new Date(
-    item.foundAt || item.lostAt || item.createdAt
-  ).toLocaleDateString('pt-BR');
-
-  const detailsHtml = `
-    <div class="text-center mb-3">
-      <img src="${item.photoUrl || './assets/img/placeholder.svg'}" 
-           alt="${item.name}" 
-           class="img-fluid rounded" 
-           style="max-height: 200px;"
-           onerror="this.src='./assets/img/placeholder.svg'" />
-    </div>
-    <div class="item-detail">
-      <span class="item-detail-label">Nome:</span> ${item.name}
-    </div>
-    <div class="item-detail">
-      <span class="item-detail-label">Descrição:</span> ${item.description}
-    </div>
-    <div class="item-detail">
-      <span class="item-detail-label">Categoria:</span> ${category.name || 'Não informada'}
-    </div>
-    <div class="item-detail">
-      <span class="item-detail-label">Local:</span> ${location.name || 'Não informado'}
-    </div>
-    <div class="item-detail">
-      <span class="item-detail-label">Status:</span> 
-      <span class="item-badge ${statusClass}">${statusLabel}</span>
-    </div>
-    <div class="item-detail">
-      <span class="item-detail-label">Data:</span> ${formattedDate}
-    </div>
-  `;
-
-  // Preencher o modal
-  $('#item-modal-body').html(detailsHtml);
-
-  // Configurar o botão de reivindicar
-  const $claimBtn = $('#claim-item');
-  if (item.status === 'returned') {
-    $claimBtn.addClass('d-none');
-  } else {
-    $claimBtn.removeClass('d-none');
-    $claimBtn.data('item-id', item.id);
-  }
-
-  // Mostrar o modal
-  const modal = new bootstrap.Modal(document.getElementById('itemModal'));
-  modal.show();
+  window.location.href = `detalhes.html?id=${item.id}`;
 }
 
 // Manipula o clique no botão de reivindicar item
