@@ -1,21 +1,37 @@
+.item-image-container {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .item-image {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
+  height: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  display: block;
+  padding: 1rem;
+  background: white;
 }
 .item-details {
   background: #fff;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .status-badge {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   padding: 0.35rem 0.75rem;
   border-radius: 50px;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .status-found {
   background-color: #d1fae5;
@@ -30,14 +46,77 @@
   color: #1e40af;
 }
 .detail-item {
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #f0f0f0;
 }
 .detail-item:last-child {
   border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+/* Estilo para o autor */
+#item-author {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #e9ecef;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  font-size: 1.25rem;
+}
+
+/* Estilo para os botões */
+#contact-button {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+#contact-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 991.98px) {
+  .item-details {
+    margin-top: 1.5rem;
+  }
+  
+  .item-image {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .item-image {
+    max-height: 350px;
+  }
+  
+  .item-details {
+    padding: 1.5rem;
+  }
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.item-details {
+  animation: fadeIn 0.3s ease-out forwards;
 }
 .detail-label {
   font-size: 0.875rem;

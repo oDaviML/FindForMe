@@ -16,20 +16,23 @@ function getItemIdFromUrl() {
 async function loadItemDetails(itemId) {
   try {
     // Fazer requisições em paralelo
-    const [itemResponse, categoriesResponse, locationsResponse] =
+    const [itemResponse, categoriesResponse, locationsResponse, usersResponse] =
       await Promise.all([
         $.get(`${API_BASE_URL}/items/${itemId}`),
         $.get(`${API_BASE_URL}/categories`),
         $.get(`${API_BASE_URL}/locations`),
+        $.get(`${API_BASE_URL}/users`),
       ]);
 
     const item = itemResponse;
     const categories = categoriesResponse;
     const locations = locationsResponse;
+    const users = usersResponse;
 
-    // Encontrar categoria e localização do item
+    // Encontrar categoria, localização e usuário do item
     const category = categories.find((cat) => cat.id === item.categoryId);
     const location = locations.find((loc) => loc.id === item.locationId);
+    const author = users.find((user) => user.id === item.reportedBy);
 
     // Formatar a data
     const date = new Date(item.createdAt);
@@ -41,12 +44,21 @@ async function loadItemDetails(itemId) {
       minute: '2-digit',
     });
 
-    // Preencher os dados do item
+    // Preencher os dados na página
     $('#item-name').text(item.name);
-    $('#item-description').text(item.description || 'Sem descrição fornecida');
+    $('#item-description').text(item.description || 'Sem descrição fornecida.');
     $('#item-category').text(category ? category.name : 'Não especificada');
     $('#item-location').text(location ? location.name : 'Local desconhecido');
     $('#item-date').text(formattedDate);
+
+    // Preencher informações do autor
+    if (author) {
+      $('#author-name').text(author.name || 'Usuário anônimo');
+      $('#author-email').text(author.email || '');
+    } else {
+      $('#author-name').text('Usuário anônimo');
+      $('#author-email').text('');
+    }
 
     // Configurar a imagem
     if (item.photoUrl) {
@@ -56,9 +68,10 @@ async function loadItemDetails(itemId) {
     }
 
     // Configurar o status
+    const statusElement = $('#item-status');
     const statusClass = `status-${item.status}`;
     const statusText = STATUS_LABELS[item.status] || item.status;
-    $('#item-status')
+    statusElement
       .removeClass('status-found status-lost status-returned')
       .addClass(statusClass)
       .text(statusText);
@@ -84,6 +97,16 @@ function handleClaimItem() {
   alert('Funcionalidade de reivindicação será implementada em breve!');
 }
 
+// Função para lidar com o clique no botão de contato
+function handleContactButton() {
+  const email = $('#author-email').text().trim();
+  if (email) {
+    window.location.href = `mailto:${email}?subject=Encontrei seu item no FindForMe`;
+  } else {
+    alert('O usuário não disponibilizou um e-mail para contato.');
+  }
+}
+
 // Inicialização da página
 $(document).ready(() => {
   const itemId = getItemIdFromUrl();
@@ -93,8 +116,9 @@ $(document).ready(() => {
     return;
   }
 
-  // Configurar evento de clique no botão de reivindicar
+  // Configurar eventos de clique
   $('#claim-item').on('click', handleClaimItem);
+  $('#contact-button').on('click', handleContactButton);
 
   // Carregar os detalhes do item
   loadItemDetails(itemId);

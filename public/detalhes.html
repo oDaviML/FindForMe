@@ -43,36 +43,46 @@
     </nav>
 
     <!-- Conteúdo principal -->
-    <div class="container content-wrapper py-4">
+    <div class="container py-4">
+      <!-- Loading spinner -->
       <div id="loading" class="text-center py-5">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Carregando...</span>
         </div>
-        <p class="mt-2">Carregando detalhes do item...</p>
+        <p class="mt-3">Carregando detalhes do item...</p>
       </div>
 
+      <!-- Conteúdo principal (será mostrado após carregar) -->
       <div id="item-details" class="d-none">
         <div class="row">
           <div class="col-12 mb-4">
-            <img
-              id="item-image"
-              src=""
-              alt="Imagem do item"
-              class="item-image"
-            />
+            <button class="btn btn-outline-primary" onclick="history.back()">
+              <i class="ri-arrow-left-line"></i> Voltar
+            </button>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-12">
-            <div class="item-details mb-4">
-              <div
-                class="d-flex justify-content-between align-items-center mb-3"
-              >
-                <h2 id="item-name" class="mb-0"></h2>
+          <!-- Coluna da imagem (esquerda em desktop, topo em mobile) -->
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="item-image-container">
+              <img
+                id="item-image"
+                src=""
+                alt="Imagem do item"
+                class="item-image"
+              />
+            </div>
+          </div>
+
+          <!-- Coluna dos detalhes (direita em desktop, embaixo em mobile) -->
+          <div class="col-lg-6">
+            <div class="item-details">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 id="item-name" class="h3 mb-0"></h1>
                 <span id="item-status" class="status-badge"></span>
               </div>
-
+              
               <div class="detail-item">
                 <div class="detail-label">Descrição</div>
                 <div id="item-description" class="detail-value"></div>
@@ -83,19 +93,42 @@
                 <div id="item-category" class="detail-value"></div>
               </div>
 
+
               <div class="detail-item">
                 <div class="detail-label">Localização</div>
                 <div id="item-location" class="detail-value"></div>
               </div>
+
 
               <div class="detail-item">
                 <div class="detail-label">Data do registro</div>
                 <div id="item-date" class="detail-value"></div>
               </div>
 
-              <button id="claim-item" class="btn btn-primary btn-claim">
-                <i class="ri-hand-heart-line me-2"></i>Reivindicar este item
-              </button>
+
+              <div class="detail-item">
+                <div class="detail-label">Publicado por</div>
+                <div id="item-author" class="detail-value">
+                  <div class="d-flex align-items-center">
+                    <div class="author-avatar me-2">
+                      <i class="ri-user-fill"></i>
+                    </div>
+                    <div>
+                      <div id="author-name" class="fw-semibold"></div>
+                      <small id="author-email" class="text-muted"></small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <button id="contact-button" class="btn btn-primary w-100">
+                  <i class="ri-chat-3-line me-2"></i> Entrar em contato
+                </button>
+                <button id="claim-item" class="btn btn-outline-secondary w-100 mt-2">
+                  <i class="ri-flag-line me-2"></i> Reivindicar item
+                </button>
+              </div>
             </div>
           </div>
         </div>
