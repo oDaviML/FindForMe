@@ -9,17 +9,15 @@ const STATUS_LABELS = {
 };
 async function fetchAllItems() {
   try {
-    const [itemsRes, categoriesRes, locationsRes] = await Promise.all([
-      fetch('http://localhost:3000/items'),
-      fetch('http://localhost:3000/categories'),
+    const [itemsRes, locationsRes] = await Promise.all([
+      fetch('http://localhost:3000/items?_expand=category'),
       fetch('http://localhost:3000/locations'),
     ]);
     const items = await itemsRes.json();
-    categories = await categoriesRes.json();
     locations = await locationsRes.json();
     allItems = items.map((item) => ({
       ...item,
-      category: categories.find((c) => c.id === item.categoryId) || {},
+      category: item.category || {},
       location:
         locations.find((l) => l.id === item.locationId)?.name || 'Desconhecido',
     }));
