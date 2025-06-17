@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('foundAt').value
     ).toISOString();
 
-    // Usa o link informado pelo usuário
     let photoUrl = photoUrlInput.value.trim();
     if (!photoUrl) {
       photoUrl = './assets/img/placeholder.svg';
@@ -98,10 +97,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!res.ok) throw new Error('Erro ao registrar o item.');
 
+      const createdItem = await res.json();
+
+      try {
+        const lostRes = await fetch(`http://localhost:3000/items?status=lost`);
+        const lostItems = await lostRes.json();
+        function isSimilar(a, b) {
+          if (!a || !b) return false;
+          const aNorm = a.toLowerCase();
+          const bNorm = b.toLowerCase();
+          return (
+            aNorm.includes(bNorm) ||
+            bNorm.includes(aNorm) ||
+            aNorm.split(' ').some((w) => bNorm.includes(w) && w.length > 3)
+          );
+        }
+        const similarLost = lostItems.find(
+          (item) =>
+            isSimilar(item.name, name) ||
+            isSimilar(item.description, description)
+        );
+        if (similarLost) {
+          const userRes = await fetch(
+            `http://localhost:3000/users/${similarLost.reportedBy}`
+          );
+          const lostUser = await userRes.json();
+          if (lostUser && lostUser.id) {
+            await fetch('http://localhost:3000/notifications', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                userId: lostUser.id,
+                title: 'Item semelhante encontrado',
+                message: `Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!`,
+                relatedItemId: createdItem.id,
+                read: false,
+                createdAt: new Date().toISOString(),
+              }),
+            });
+          }
+        }
+      } catch (notifyErr) {
+        console.warn(
+          'Não foi possível notificar usuário de item perdido:',
+          notifyErr
+        );
+      }
+
       alert('Item encontrado registrado com sucesso!');
-      form.reset();
-      imagePreview.src = './assets/img/placeholder.svg';
-      imagePreview.classList.add('d-none');
+      window.location.href = 'index.html';
     } catch (error) {
       console.error(error);
       alert('Erro ao registrar o item encontrado.');

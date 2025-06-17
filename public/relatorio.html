@@ -13,6 +13,7 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
+
     <style>
       .card-stat {
         border: 1px solid #eee;
@@ -54,12 +55,29 @@
         <!-- Ícone de notificação -->
         <div class="d-flex">
           <button
-            class="btn border-0"
-            aria-label="Notificações"
-            title="Notificações"
+            class="btn border-0 position-relative"
+            id="notification-icon"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style="background: transparent"
           >
             <i class="ri-notification-line"></i>
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-none"
+              id="notification-badge"
+            ></span>
           </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            id="notification-dropdown"
+            style="
+              min-width: 320px;
+              max-width: 400px;
+              max-height: 400px;
+              overflow-y: auto;
+            "
+          ></ul>
           <div id="user-info" class="d-flex align-items-center"></div>
         </div>
 
@@ -165,5 +183,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type="module" src="./assets/js/navbar.js"></script>
     <script src="./assets/js/relatorio.js"></script>
+    <script type="module" src="./assets/js/notificacao.js"></script>
   </body>
 </html>

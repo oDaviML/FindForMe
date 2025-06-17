@@ -40,9 +40,30 @@
 
         <!-- Ícone de notificação -->
         <div class="d-flex">
-          <button class="btn border-0">
+          <button
+            class="btn border-0 position-relative"
+            id="notification-icon"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style="background: transparent"
+          >
             <i class="ri-notification-line"></i>
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-none"
+              id="notification-badge"
+            ></span>
           </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            id="notification-dropdown"
+            style="
+              min-width: 320px;
+              max-width: 400px;
+              max-height: 400px;
+              overflow-y: auto;
+            "
+          ></ul>
           <div id="user-info" class="d-flex align-items-center"></div>
         </div>
 
@@ -157,6 +178,7 @@
       </div>
     </div>
     <script src="./assets/js/login.js"></script>
+    <script type="module" src="./assets/js/notificacao.js"></script>
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
