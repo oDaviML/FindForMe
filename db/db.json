@@ -17,6 +17,15 @@
       "phone": "11912345678",
       "createdAt": "2025-05-02T14:30:00.000Z",
       "updatedAt": "2025-05-02T14:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Carlos Pereira",
+      "email": "teste@example.com",
+      "password": "carlospereira123",
+      "phone": "11998765432",
+      "createdAt": "2025-05-03T09:15:00.000Z",
+      "updatedAt": "2025-05-03T09:15:00.000Z"
     }
   ],
   "categories": [
@@ -114,7 +123,7 @@
       "categoryId": 5,
       "status": "returned",
       "photoUrl": "/photos/item4.jpg",
-      "reportedBy": 1,
+      "reportedBy": 2,
       "foundAt": "2025-05-09T17:00:00.000Z",
       "claimedBy": 2,
       "returnedAt": "2025-05-13T10:15:00.000Z",
@@ -198,6 +207,97 @@
       "createdAt": "2025-06-17T20:19:42.257Z",
       "updatedAt": "2025-06-17T20:19:42.257Z",
       "id": 10
+    },
+    {
+      "name": "Teste12312",
+      "description": "adawdawda",
+      "locationId": 1,
+      "categoryId": 3,
+      "status": "found",
+      "photoUrl": "./assets/img/placeholder.svg",
+      "reportedBy": 1,
+      "foundAt": "2025-06-12T06:03:00.000Z",
+      "createdAt": "2025-06-17T21:43:23.587Z",
+      "updatedAt": "2025-06-17T21:43:23.587Z",
+      "id": 11
+    },
+    {
+      "name": "Teste5",
+      "description": "dawdawdawd",
+      "locationId": 1,
+      "categoryId": 3,
+      "status": "found",
+      "photoUrl": "./assets/img/placeholder.svg",
+      "reportedBy": 2,
+      "foundAt": "1231-03-13T02:08:28.000Z",
+      "createdAt": "2025-06-17T21:55:42.873Z",
+      "updatedAt": "2025-06-17T21:55:42.873Z",
+      "id": 12
+    },
+    {
+      "name": "Teste12312",
+      "description": "",
+      "locationId": 2,
+      "categoryId": 1,
+      "status": "found",
+      "photoUrl": "./assets/img/placeholder.svg",
+      "reportedBy": 1,
+      "foundAt": "1231-03-13T02:29:28.000Z",
+      "createdAt": "2025-06-17T22:03:28.648Z",
+      "updatedAt": "2025-06-17T22:03:28.648Z",
+      "id": 13
+    },
+    {
+      "name": "Teste12312",
+      "description": "dwadawdawdasdwa",
+      "locationId": 1,
+      "categoryId": 1,
+      "status": "found",
+      "photoUrl": "./assets/img/placeholder.svg",
+      "reportedBy": 1,
+      "foundAt": "2025-06-12T00:31:00.000Z",
+      "createdAt": "2025-06-17T22:05:23.180Z",
+      "updatedAt": "2025-06-17T22:05:23.180Z",
+      "id": 14
+    },
+    {
+      "name": "Teste12312",
+      "description": "wadawdasdwa",
+      "locationId": 1,
+      "categoryId": 1,
+      "status": "found",
+      "photoUrl": "./assets/img/placeholder.svg",
+      "reportedBy": 1,
+      "foundAt": "3123-12-13T15:03:00.000Z",
+      "createdAt": "2025-06-17T22:05:44.661Z",
+      "updatedAt": "2025-06-17T22:05:44.661Z",
+      "id": 15
+    },
+    {
+      "name": "Teste12312dawd asdwa",
+      "description": "3123da",
+      "locationId": 1,
+      "categoryId": 1,
+      "status": "found",
+      "photoUrl": "./assets/img/placeholder.svg",
+      "reportedBy": 1,
+      "foundAt": "2734-02-15T15:03:00.000Z",
+      "createdAt": "2025-06-17T22:07:00.686Z",
+      "updatedAt": "2025-06-17T22:07:00.686Z",
+      "id": 16
+    },
+    {
+      "name": "Smartphone Samsung",
+      "description": "dawdawdawd",
+      "locationId": 2,
+      "categoryId": 2,
+      "status": "found",
+      "photoUrl": "./assets/img/placeholder.svg",
+      "reportedBy": 3,
+      "foundAt": "1211-12-13T00:08:28.000Z",
+      "createdAt": "2025-06-17T22:10:56.669Z",
+      "updatedAt": "2025-06-17T22:10:56.669Z",
+      "id": 17
     }
   ],
   "itemHistory": [
@@ -257,8 +357,60 @@
       "title": "Item semelhante encontrado",
       "message": "Um smartphone semelhante ao que você perdeu foi encontrado. Verifique os detalhes.",
       "relatedItemId": 2,
-      "read": false,
+      "read": true,
       "createdAt": "2025-05-12T10:30:00.000Z"
+    },
+    {
+      "userId": 1,
+      "title": "Item semelhante encontrado",
+      "message": "Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!",
+      "read": true,
+      "createdAt": "2025-06-17T21:55:45.009Z",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "title": "Item semelhante encontrado",
+      "message": "Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!",
+      "read": false,
+      "createdAt": "2025-06-17T22:03:30.809Z",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "title": "Item semelhante encontrado",
+      "message": "Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!",
+      "relatedItemId": 14,
+      "read": false,
+      "createdAt": "2025-06-17T22:05:25.387Z",
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "title": "Item semelhante encontrado",
+      "message": "Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!",
+      "relatedItemId": 15,
+      "read": false,
+      "createdAt": "2025-06-17T22:05:46.853Z",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "title": "Item semelhante encontrado",
+      "message": "Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!",
+      "relatedItemId": 16,
+      "read": false,
+      "createdAt": "2025-06-17T22:07:02.905Z",
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "title": "Item semelhante encontrado",
+      "message": "Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!",
+      "relatedItemId": 17,
+      "read": true,
+      "createdAt": "2025-06-17T22:10:58.814Z",
+      "id": 7
     }
   ],
   "reports": [
