@@ -159,6 +159,32 @@
       "createdAt": "2025-06-17T16:48:48.822Z",
       "updatedAt": "2025-06-17T16:48:48.822Z",
       "id": 7
+    },
+    {
+      "name": "Teste4",
+      "description": "Teste",
+      "categoryId": "2",
+      "locationId": "1",
+      "status": "lost",
+      "photoUrl": "/assets/imagens_itens/1750187692525_RobloxScreenShot20250307_145739132.png",
+      "reportedBy": "1",
+      "lostAt": "2025-06-12T03:02",
+      "createdAt": "2025-06-17T19:14:52.525Z",
+      "updatedAt": "2025-06-17T19:14:52.525Z",
+      "id": 8
+    },
+    {
+      "name": "Teste5",
+      "description": "dwadwad",
+      "categoryId": "1",
+      "locationId": "2",
+      "status": "lost",
+      "photoUrl": "https://cdn.awsli.com.br/2004/2004471/produto/278043856/produto-teste_6355364765230299551-5dca5b60c67efea46e15917435354683-640-0-4meiyrif8i.jpg",
+      "reportedBy": "1",
+      "lostAt": "2025-06-27T12:50",
+      "createdAt": "2025-06-17T19:20:28.772Z",
+      "updatedAt": "2025-06-17T19:20:28.772Z",
+      "id": 9
     }
   ],
   "itemHistory": [

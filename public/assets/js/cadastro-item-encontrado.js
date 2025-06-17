@@ -41,22 +41,28 @@ $(document).ready(function () {
     }
   });
 
+  $('#photoUrl').on('input', function () {
+    const url = $(this).val();
+    if (url) {
+      $('#imagePreview').attr('src', url).removeClass('d-none');
+    } else {
+      $('#imagePreview')
+        .attr('src', './assets/img/placeholder.svg')
+        .addClass('d-none');
+    }
+  });
+
   $('#found-item-form').on('submit', function (e) {
     e.preventDefault();
     const nome = $('#name').val().trim();
     const descricao = $('#description').val().trim();
     const categoria = $('#category').val();
     const local = $('#location').val();
-    const file = $('#photo')[0].files[0];
     const foundAt = $('#foundAt').val();
+    const photoUrl = $('#photoUrl').val().trim();
     if (!nome || !categoria || !local || !foundAt) {
       alert('Preencha todos os campos obrigatórios.');
       return;
-    }
-    let photoUrl = '';
-    if (file) {
-      photoUrl = `/assets/imagens_itens/${Date.now()}_${file.name}`;
-      // Simula upload (em produção, faria upload real)
     }
     const item = {
       name: nome,

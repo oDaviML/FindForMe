@@ -151,12 +151,14 @@
                 <div
                   class="col-md-6 d-flex flex-column align-items-center justify-content-center"
                 >
-                  <label for="photo" class="form-label">Foto do item</label>
+                  <label for="photoUrl" class="form-label"
+                    >Link da imagem do item</label
+                  >
                   <input
                     class="form-control mb-2"
-                    type="file"
-                    id="photo"
-                    accept="image/*"
+                    type="url"
+                    id="photoUrl"
+                    placeholder="https://exemplo.com/imagem.jpg"
                   />
                   <img
                     id="imagePreview"
