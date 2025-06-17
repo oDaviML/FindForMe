@@ -28,7 +28,7 @@ function loadData() {
 
   // Fazer requisições em paralelo
   Promise.all([
-    $.get(`${API_BASE_URL}/items`),
+    $.get(`${API_BASE_URL}/items?_expand=category&_expand=location`),
     $.get(`${API_BASE_URL}/categories`),
     $.get(`${API_BASE_URL}/locations`),
   ])
@@ -179,16 +179,15 @@ function renderItems() {
 
   // Adicionar itens ao container
   for (const item of filteredItems) {
-    const category = categories.find((c) => c.id === item.categoryId) || {};
-    const location = locations.find((l) => l.id === item.locationId) || {};
+    const category = item.category || {};
+    const location = item.location || {};
     const statusClass = `badge-${item.status}`;
     const statusLabel = STATUS_LABELS[item.status] || item.status;
-
     const itemHtml = `
       <div class="col-lg-4 col-md-6 col-12 mb-4">
         <div class="item-card" data-id="${item.id}">
           <div class="item-image">
-            <img src="${item.photoUrl ? '/public' + item.photoUrl : './assets/img/placeholder.svg'}" alt="${item.name}" 
+            <img src="${item.photoUrl ? item.photoUrl : './assets/img/placeholder.svg'}" alt="${item.name}" 
                  onerror="this.src='./assets/img/placeholder.svg'" />
           </div>
           <div class="item-body">
@@ -202,7 +201,6 @@ function renderItems() {
         </div>
       </div>
     `;
-
     $container.append(itemHtml);
   }
 
