@@ -151,7 +151,7 @@ function applyFilters() {
       selectedStatus.length === 0 || selectedStatus.includes(item.status);
 
     return matchesSearch && matchesCategory && matchesLocation && matchesStatus;
-  );
+  });
 
   // Renderizar itens filtrados
   renderItems();
@@ -207,9 +207,9 @@ function renderItems() {
   }
 
   // Adicionar evento de clique nos cards
-  $('.item-card').on('click', function() {
+  $('.item-card').on('click', function () {
     const itemId = $(this).data('id');
-    const item = items.find(i => i.id === itemId);
+    const item = items.find((i) => i.id === itemId);
     if (item) {
       showItemDetails(item);
     }

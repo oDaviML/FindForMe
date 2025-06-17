@@ -120,6 +120,45 @@
       "returnedAt": "2025-05-13T10:15:00.000Z",
       "createdAt": "2025-05-09T17:30:00.000Z",
       "updatedAt": "2025-05-13T10:15:00.000Z"
+    },
+    {
+      "name": "Teste",
+      "description": "Teste",
+      "categoryId": "2",
+      "locationId": "1",
+      "status": "lost",
+      "photoUrl": "/assets/imagens_itens/1750178069882_RobloxScreenShot20250307_145739132.png",
+      "reportedBy": "1",
+      "lostAt": "2025-06-17T16:34:29.882Z",
+      "createdAt": "2025-06-17T16:34:29.882Z",
+      "updatedAt": "2025-06-17T16:34:29.882Z",
+      "id": 5
+    },
+    {
+      "name": "Teste",
+      "description": "Teste",
+      "categoryId": "2",
+      "locationId": "1",
+      "status": "lost",
+      "photoUrl": "/assets/imagens_itens/1750178071989_RobloxScreenShot20250307_145739132.png",
+      "reportedBy": "1",
+      "lostAt": "2025-06-17T16:34:31.989Z",
+      "createdAt": "2025-06-17T16:34:31.989Z",
+      "updatedAt": "2025-06-17T16:34:31.989Z",
+      "id": 6
+    },
+    {
+      "name": "Teste2",
+      "description": "dsdawdawdawd",
+      "categoryId": "3",
+      "locationId": "1",
+      "status": "lost",
+      "photoUrl": "/assets/imagens_itens/1750178928822_RobloxScreenShot20250307_150956802.png",
+      "reportedBy": "1",
+      "lostAt": "2025-06-05T03:02",
+      "createdAt": "2025-06-17T16:48:48.822Z",
+      "updatedAt": "2025-06-17T16:48:48.822Z",
+      "id": 7
     }
   ],
   "itemHistory": [
