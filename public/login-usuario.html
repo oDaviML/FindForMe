@@ -43,6 +43,7 @@
           <button class="btn border-0">
             <i class="ri-notification-line"></i>
           </button>
+          <div id="user-info" class="d-flex align-items-center"></div>
         </div>
 
         <!-- Menu Hamburguer Collapse -->
@@ -139,7 +140,7 @@
           <div class="mb-3">
             <label for="senha" class="form-label">Senha:</label>
             <input
-              type="senha"
+              type="password"
               class="form-control"
               id="senha"
               name="senha"
@@ -155,35 +156,7 @@
         </div>
       </div>
     </div>
-    <script>
-      const loginForm = document.getElementById('loginForm');
-
-      loginForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('senha').value;
-
-        try {
-          const response = await fetch(
-            `http://localhost:3000/users?email=${email}&senha=${senha}`
-          );
-          const data = await response.json();
-
-          if (data.length > 0) {
-            alert('Login bem-sucedido!');
-            window.location.href = 'index.html';
-          } else {
-            alert('E-mail ou senha incorretos!');
-          }
-        } catch (error) {
-          console.error('Erro na requisição:', error);
-          alert(
-            'Erro ao tentar fazer login. Verifique sua conexão com o servidor.'
-          );
-        }
-      });
-    </script>
+    <script src="./assets/js/login.js"></script>
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
