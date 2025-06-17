@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const locSel = document.getElementById('location');
   const imagePreview = document.getElementById('imagePreview');
   const form = document.getElementById('found-item-form');
+  const photoUrlInput = document.getElementById('photoUrl');
 
   async function loadSelectData() {
     try {
@@ -39,16 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadSelectData();
 
-  document.getElementById('photo').addEventListener('change', function () {
-    const file = this.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        imagePreview.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">`;
-      };
-      reader.readAsDataURL(file);
+  // Atualiza o preview da imagem ao digitar/colar o link
+  photoUrlInput.addEventListener('input', function () {
+    const url = this.value.trim();
+    if (url) {
+      imagePreview.src = url;
+      imagePreview.classList.remove('d-none');
     } else {
-      imagePreview.textContent = 'Imagem';
+      imagePreview.src = './assets/img/placeholder.svg';
+      imagePreview.classList.add('d-none');
     }
   });
 
@@ -70,10 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('foundAt').value
     ).toISOString();
 
-    let photoUrl = '';
-    const file = document.getElementById('photo').files[0];
-    if (file) {
-      photoUrl = '/photos/default-found.jpg'; // Placeholder
+    // Usa o link informado pelo usuário
+    let photoUrl = photoUrlInput.value.trim();
+    if (!photoUrl) {
+      photoUrl = './assets/img/placeholder.svg';
     }
 
     const newItem = {
@@ -100,7 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       alert('Item encontrado registrado com sucesso!');
       form.reset();
-      imagePreview.textContent = 'Imagem';
+      imagePreview.src = './assets/img/placeholder.svg';
+      imagePreview.classList.add('d-none');
     } catch (error) {
       console.error(error);
       alert('Erro ao registrar o item encontrado.');

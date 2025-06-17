@@ -185,6 +185,19 @@
       "createdAt": "2025-06-17T19:20:28.772Z",
       "updatedAt": "2025-06-17T19:20:28.772Z",
       "id": 9
+    },
+    {
+      "name": "Teste12312",
+      "description": "adawdawda",
+      "locationId": 2,
+      "categoryId": 3,
+      "status": "lost",
+      "photoUrl": "https://gru.ifsp.edu.br/images/phocagallery/galeria2/image03_grd.png",
+      "reportedBy": 3,
+      "lostAt": "2025-06-12T15:03:00.000Z",
+      "createdAt": "2025-06-17T20:19:42.257Z",
+      "updatedAt": "2025-06-17T20:19:42.257Z",
+      "id": 10
     }
   ],
   "itemHistory": [

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const locSel = document.getElementById('location');
   const imagePreview = document.getElementById('imagePreview');
   const form = document.getElementById('lost-item-form');
+  const photoUrlInput = document.getElementById('photoUrl');
 
   async function loadSelectData() {
     try {
@@ -41,17 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadSelectData();
 
-  // Preview da imagem
-  document.getElementById('photo').addEventListener('change', function () {
-    const file = this.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        imagePreview.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">`;
-      };
-      reader.readAsDataURL(file);
+  // Atualiza o preview da imagem ao digitar/colar o link
+  photoUrlInput.addEventListener('input', function () {
+    const url = this.value.trim();
+    if (url) {
+      imagePreview.src = url;
+      imagePreview.classList.remove('d-none');
     } else {
-      imagePreview.textContent = 'Imagem';
+      imagePreview.src = './assets/img/placeholder.svg';
+      imagePreview.classList.add('d-none');
     }
   });
 
@@ -66,7 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const title = document.getElementById('title').value.trim();
+    const title =
+      document.getElementById('title')?.value.trim() ||
+      document.getElementById('name').value.trim();
     const description = document.getElementById('description').value.trim();
     const categoryId = parseInt(catSel.value);
     const locationId = parseInt(locSel.value);
@@ -74,10 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('lostAt').value
     ).toISOString();
 
-    const photoInput = document.getElementById('photo');
-    let photoUrl = '';
-    if (photoInput.files.length > 0) {
-      photoUrl = '/photos/default-lost.jpg'; // Placeholder
+    // Usa o link informado pelo usuário
+    let photoUrl = photoUrlInput.value.trim();
+    if (!photoUrl) {
+      photoUrl = './assets/img/placeholder.svg';
     }
 
     const newItem = {
@@ -104,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       alert('Item perdido registrado com sucesso!');
       form.reset();
-      imagePreview.textContent = 'Imagem';
+      imagePreview.src = './assets/img/placeholder.svg';
+      imagePreview.classList.add('d-none');
     } catch (error) {
       console.error(error);
       alert('Erro ao registrar o item.');
