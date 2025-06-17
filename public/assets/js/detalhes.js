@@ -58,7 +58,11 @@ async function loadItemDetails(itemId) {
 
     // Configurar a imagem
     if (item.photoUrl) {
-      $('#item-image').attr('src', item.photoUrl);
+      $('#item-image')
+        .attr('src', item.photoUrl)
+        .on('error', function () {
+          $(this).attr('src', './assets/img/placeholder.svg');
+        });
     } else {
       $('#item-image').attr('src', './assets/img/placeholder.svg');
     }
@@ -163,14 +167,3 @@ $(document).ready(() => {
   // Carregar os detalhes do item
   loadItemDetails(itemId);
 });
-
-// Adicionar um placeholder genérico para imagens quebradas
-document.addEventListener(
-  'error',
-  (e) => {
-    if (e.target.tagName === 'IMG') {
-      e.target.src = './assets/img/placeholder.svg';
-    }
-  },
-  true
-);

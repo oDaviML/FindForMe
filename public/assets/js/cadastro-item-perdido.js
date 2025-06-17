@@ -22,8 +22,12 @@ $(document).ready(function () {
     $loc.empty();
     $cat.append('<option value="">Selecione</option>');
     $loc.append('<option value="">Selecione</option>');
-    categorias.forEach((c) => $cat.append(`<option value="${c.id}">${c.name}</option>`));
-    locais.forEach((l) => $loc.append(`<option value="${l.id}">${l.name}</option>`));
+    categorias.forEach((c) =>
+      $cat.append(`<option value="${c.id}">${c.name}</option>`)
+    );
+    locais.forEach((l) =>
+      $loc.append(`<option value="${l.id}">${l.name}</option>`)
+    );
   }
 
   $('#photo').on('change', function (e) {

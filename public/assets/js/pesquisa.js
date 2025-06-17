@@ -188,7 +188,7 @@ function renderItems() {
       <div class="col-lg-4 col-md-6 col-12 mb-4">
         <div class="item-card" data-id="${item.id}">
           <div class="item-image">
-            <img src="${item.photoUrl ? '/public' + item.photoUrl : './assets/img/placeholder.svg'}" alt="${item.name}" 
+            <img src="${item.photoUrl ? item.photoUrl : './assets/img/placeholder.svg'}" alt="${item.name}" 
                  onerror="this.src='./assets/img/placeholder.svg'" />
           </div>
           <div class="item-body">

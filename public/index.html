@@ -130,123 +130,11 @@
       </div>
 
       <!-- Itens encontrados recentes -->
-      <style>
-        .item-card {
-          background: #e6f9ed; /* verde claro para itens encontrados */
-          border: 1px solid #198754;
-          border-radius: 8px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-          transition: box-shadow 0.2s;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          margin-bottom: 0;
-        }
-        .item-card:hover {
-          box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-        }
-        .item-img {
-          width: 100%;
-          height: 180px;
-          object-fit: cover;
-          background: #f0f0f0;
-          border-top-left-radius: 8px;
-          border-top-right-radius: 8px;
-        }
-        .item-card-body {
-          flex: 1;
-          padding: 1rem;
-        }
-        .item-title {
-          font-size: 1.1rem;
-          font-weight: 600;
-          margin-bottom: 0.5rem;
-        }
-        .item-desc {
-          font-size: 0.95rem;
-          color: #555;
-        }
-        .item-divider {
-          height: 4px;
-          background: #111;
-          margin: 0 0 24px 0;
-          border-radius: 2px;
-        }
-      </style>
       <div class="row g-4 mb-3" id="recent-found-items">
-        <div class="col-12 mb-3">
-          <div class="input-group">
-            <span class="input-group-text bg-white border-end-0">
-              <i class="ri-search-line"></i>
-            </span>
-            <input type="text" class="form-control border-start-0" id="search-found-items" placeholder="Pesquisar itens relevantes...">
-          </div>
-        </div>
         <div class="row g-4" id="found-items-list">
           <!-- Itens encontrados serão inseridos via JS -->
         </div>
       </div>
-      <script>
-        // Busca itens relevantes diretamente do db.json via json-server
-        let foundItems = [];
-        async function fetchFoundItems() {
-          try {
-            const res = await fetch('http://localhost:3000/items?status=found');
-            const items = await res.json();
-            const locRes = await fetch('http://localhost:3000/locations');
-            const locations = await locRes.json();
-            foundItems = items.map(item => ({
-              ...item,
-              location: locations.find(l => l.id === item.locationId)?.name || 'Desconhecido'
-            }));
-            renderFoundItems();
-          } catch (e) {
-            document.getElementById('found-items-list').innerHTML = '<div class="col-12 text-center text-danger py-5">Erro ao carregar itens do servidor.</div>';
-          }
-        }
-        function formatDate(dateStr) {
-          const date = new Date(dateStr);
-          return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-        }
-        function renderFoundItems(filter = "") {
-          const list = document.getElementById('found-items-list');
-          let filtered = foundItems.slice().sort((a, b) => new Date(b.foundAt) - new Date(a.foundAt));
-          if (filter) {
-            const f = filter.toLowerCase();
-            filtered = filtered.filter(item =>
-              item.name.toLowerCase().includes(f) ||
-              item.description.toLowerCase().includes(f) ||
-              item.location.toLowerCase().includes(f)
-            );
-          }
-          if (filtered.length === 0) {
-            list.innerHTML = '<div class="col-12 text-center text-muted py-5">Nenhum item encontrado.</div>';
-            return;
-          }
-          list.innerHTML = filtered.map((item, idx) => `
-            <div class=\"col-lg-4 col-md-6 col-12\">
-              <div class=\"item-card h-100\" onclick=\"window.location.href='detalhes.html?id=${item.id}'\" style=\"cursor: pointer;\">
-                <img src=\"${item.photoUrl}\" alt=\"${item.name}\" class=\"item-img\" onerror=\"this.src='./assets/img/placeholder.jpg'\" />
-                <div class=\"item-card-body\">
-                  <div class=\"item-title\">${item.name}</div>
-                  <div class=\"item-desc\">${item.description}</div>
-                  <div class=\"mt-2 text-muted\">
-                    <div><i class=\"ri-map-pin-line\"></i> ${item.location}</div>
-                    <div><i class=\"ri-calendar-line\"></i> ${formatDate(item.foundAt)}</div>
-                    <div><span class=\"badge bg-success\"><i class=\"ri-check-line\"></i> Encontrado</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          `).join("");
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-          fetchFoundItems();
-          document.getElementById('search-found-items').addEventListener('input', function() {
-            renderFoundItems(this.value);
-          });
-        });
-      </script>
       <!-- Fim dos itens encontrados recentes -->
     </div>
 
@@ -263,5 +151,6 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
+    <script src="./assets/js/index.js"></script>
   </body>
 </html>
