@@ -20,12 +20,14 @@ O wireframe apresentado define a estrutura fundamental que será padrão para to
   - Área centralizada e destacada para exibição do conteúdo principal da página.
   - Espaço amplo e com margens, priorizando a leitura, a interação e a responsividade.
 
+![Wireframe](./images/Wireframe.png)
 _Figura: Wireframe_
 
 ## 3.2. Fluxo do Usuário
 
 A navegação principal da aplicação será realizada por meio de um menu, disponível em todas as páginas, garantindo acesso rápido e intuitivo às principais funcionalidades. O fluxo de usuário foi planejado para ser simples e objetivo, proporcionando a melhor experiência possível para quem deseja registrar, buscar ou consultar informações sobre itens perdidos e encontrados.
 
+![Fluxo do usuário](./images/Fluxo%20usuario.png)
 _Figura: Fluxo do usuário_
 
 ## 3.3. Interfaces
@@ -34,37 +36,45 @@ _Figura: Fluxo do usuário_
 
 Esta tela exibe o catálogo dos achados e perdidos, com uma seção de "Itens relevantes".
 
+![Homepage](./images/Tela%20Homepage.png)
 _Figura: Interface menu principal_
 
 ### Tela - Busca item
 
 Permite ao usuário pesquisar e filtrar itens perdidos ou encontrados para localizar objetos de forma rápida. Os filtros incluem data, tipo de item (Documentos, Garrafas, Material escolar, etc.) e se o item foi encontrado ou perdido.
 
+![Busca item](./images/Tela%20busca%20itens.png)
 _Figura: Interface menu de busca de itens_
 
 ### Tela - Registrar item perdido
 
 Um formulário para o usuário preencher os dados para registrar um item perdido, incluindo informações do item (título, categoria, descrição), informações sobre a perda (data, hora, local) e uma imagem.
 
+![Registrar item perdido](./images/Tela%20cadastro%20de%20item.png)
 _Figura: Interface menu de registro de item perdido_
 
 ### Tela - Registrar item encontrado
 
 Um formulário para o usuário preencher os dados para registrar um item que encontrou, incluindo informações do item, informações sobre o encontro (data, hora, local) e uma imagem.
 
+![Registrar item encontrado](./images/Tela%20cadastro%20de%20item%20encontrado.png)
 _Figura: Interface menu de registro de item encontrado_
 
 ### Tela - Relatórios
 
 Exibe um resumo dos itens perdidos e encontrados registrados no sistema, com estatísticas como total de itens perdidos, total de itens encontrados, itens devolvidos e itens ainda não devolvidos.
 
+![Relatórios](./images/Tela%20relatorios.png)
 _Figura: Interface menu de relatórios_
 
 ### Tela - Login e Cadastro
 
 Interfaces para o usuário entrar no sistema com e-mail e senha ou se registrar para uma nova conta.
 
+![Cadastro](./images/Tela%20cadastro%20pessoa.png)
 _Figura: Interface menu de registro_
+
+![Login](./images/Tela%20login.png)
 _Figura: Interface menu de entrada_
 
 ### Menu
@@ -78,4 +88,5 @@ O menu de navegação lateral permite acesso às seguintes seções:
 - Itens já encontrados
 - Relatório de itens
 
+![Menu de navegação](./images/Menu.png)
 _Figura: Interface do menu_

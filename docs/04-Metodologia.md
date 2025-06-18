@@ -24,6 +24,7 @@ A equipe adota práticas ágeis para a organização das tarefas, utilizando o m
 - **Revisão de Código:** Tarefas concluídas, mas aguardam a validação e aprovação de código por outro membro da equipe.
 - **Concluído:** Tarefas totalmente finalizadas, aprovadas e entregues.
 
+![Quadro Trello](./images/Quadro%20trello.png)
 _Figura: Tela do quadro no Trello_
 
 ## 4.3. Gerenciamento do Código-fonte
