@@ -32,3 +32,13 @@
   background-color: #dbeafe;
   color: #1e40af;
 }
+
+/* Estilos para detalhes do item */
+.item-details {
+  color: var(--text-secondary-color);
+}
+
+.item-details i {
+  color: var(--primary-color);
+  opacity: 0.7;
+}

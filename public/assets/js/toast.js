@@ -1,14 +1,3 @@
-/**
- * Sistema de notificação toast para ser usado em todo o projeto
- * Substitui os alerts padrão por notificações estilizadas
- */
-
-/**
- * Exibe uma mensagem toast personalizada
- * @param {string} message - Mensagem a ser exibida
- * @param {string} type - Tipo de toast: 'success', 'danger', 'warning', 'info'
- * @param {number} duration - Duração em milissegundos (padrão: 3000ms)
- */
 export function showToast(message, type = 'success', duration = 3000) {
   // Cria o container de toasts se não existir
   if (!$('#toast-container').length) {

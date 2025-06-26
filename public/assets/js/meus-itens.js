@@ -73,7 +73,7 @@ async function loadLocations() {
 async function loadUserItems(userId) {
   try {
     const response = await fetch(
-      `http://localhost:3000/items?userId=${userId}&_expand=category&_expand=location`
+      `http://localhost:3000/items?reportedBy=${userId}&_expand=category&_expand=location`
     );
     const items = await response.json();
     renderItems(items);
@@ -87,9 +87,21 @@ function renderItems(items) {
   itemsList.empty();
 
   if (items.length === 0) {
-    itemsList.html(
-      '<p class="col-12 text-center">Você ainda não cadastrou nenhum item.</p>'
-    );
+    itemsList.html(`
+      <div class="col-12 text-center py-5">
+        <i class="ri-file-list-3-line fs-1 text-secondary mb-3"></i>
+        <h5>Nenhum item cadastrado</h5>
+        <p class="text-secondary">Você ainda não cadastrou nenhum item perdido ou encontrado.</p>
+        <div class="mt-4">
+          <a href="cadastro-item-perdido.html" class="btn btn-primary me-2">
+            <i class="ri-search-line me-1"></i> Cadastrar Item Perdido
+          </a>
+          <a href="cadastro-item-encontrado.html" class="btn btn-outline-primary">
+            <i class="ri-hand-heart-line me-1"></i> Cadastrar Item Encontrado
+          </a>
+        </div>
+      </div>
+    `);
     return;
   }
 
@@ -103,7 +115,11 @@ function renderItems(items) {
               <h5 class="card-title mb-0">${item.name}</h5>
             </div>
             <p class="card-text text-secondary small flex-grow-1">${item.description}</p>
-            <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="item-details mb-3">
+              <p class="mb-1 small"><i class="ri-folder-line me-1"></i> ${item.category?.name || 'Sem categoria'}</p>
+              <p class="mb-1 small"><i class="ri-map-pin-line me-1"></i> ${item.location?.name || 'Sem local'}</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
                 <span class="${getBadgeClass(item.status)}">${getStatusLabel(item.status)}</span>
                 <span class="text-muted small">${new Date(item.createdAt).toLocaleDateString()}</span>
             </div>
