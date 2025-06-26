@@ -409,6 +409,19 @@
         "email": "teste2@example.com",
         "type": "visitor"
       }
+    },
+    {
+      "name": "Bola",
+      "description": "Bola redonda deliciosa suculenta",
+      "locationId": 7,
+      "categoryId": 9,
+      "status": "lost",
+      "photoUrl": "https://cambuci.vtexassets.com/arquivos/ids/1505517-800-auto?v=638774861932270000&width=800&height=auto&aspect=true",
+      "reportedBy": 2,
+      "lostAt": "2025-06-26T07:20:00.000Z",
+      "createdAt": "2025-06-26T20:40:49.863Z",
+      "updatedAt": "2025-06-26T20:40:49.863Z",
+      "id": 20
     }
   ],
   "itemHistory": [
