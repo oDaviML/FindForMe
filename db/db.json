@@ -91,7 +91,7 @@
       "description": "Carteira preta com CNH e cartões de crédito",
       "locationId": 2,
       "categoryId": 1,
-      "status": "encontrado",
+      "status": "lost",
       "photoUrl": "/photos/item1.jpg",
       "reportedBy": 1,
       "foundAt": "2025-05-10T15:30:00.000Z",
@@ -117,7 +117,7 @@
       "description": "Guarda-chuva preto automático",
       "locationId": 3,
       "categoryId": 5,
-      "status": "perdido",
+      "status": "lost",
       "photoUrl": "/photos/item4.jpg",
       "reportedBy": 2,
       "foundAt": "2025-05-09T17:00:00.000Z",
@@ -157,7 +157,7 @@
       "description": "dsdawdawdawd",
       "categoryId": 3,
       "locationId": 3,
-      "status": "devolvido",
+      "status": "returned",
       "photoUrl": "/assets/imagens_itens/1750178928822_RobloxScreenShot20250307_150956802.png",
       "reportedBy": "1",
       "lostAt": "2025-06-05T03:02",
@@ -274,7 +274,7 @@
       "description": "3123da",
       "locationId": 1,
       "categoryId": 1,
-      "status": "devolvido",
+      "status": "returned",
       "photoUrl": "./assets/img/placeholder.svg",
       "reportedBy": 1,
       "foundAt": "2734-02-15T15:03:00.000Z",
@@ -294,6 +294,19 @@
       "createdAt": "2025-06-17T22:10:56.669Z",
       "updatedAt": "2025-06-17T22:10:56.669Z",
       "id": 17
+    },
+    {
+      "name": "Garrafinha",
+      "description": "Teste",
+      "locationId": 1,
+      "categoryId": 5,
+      "status": "found",
+      "photoUrl": "https://cdn.awsli.com.br/600x1000/761/761999/produto/230668737259ae2d06c.jpg",
+      "reportedBy": 4,
+      "foundAt": "2025-06-27T17:30:00.000Z",
+      "createdAt": "2025-06-26T16:39:46.693Z",
+      "updatedAt": "2025-06-26T16:39:46.693Z",
+      "id": 18
     }
   ],
   "itemHistory": [
@@ -407,6 +420,15 @@
       "read": true,
       "createdAt": "2025-06-17T22:10:58.814Z",
       "id": 7
+    },
+    {
+      "userId": 1,
+      "title": "Item semelhante encontrado",
+      "message": "Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!",
+      "relatedItemId": 18,
+      "read": false,
+      "createdAt": "2025-06-26T16:39:46.999Z",
+      "id": 8
     }
   ],
   "reports": [
