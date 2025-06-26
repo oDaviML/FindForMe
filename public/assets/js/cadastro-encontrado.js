@@ -46,10 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = this.value.trim();
     if (url) {
       imagePreview.src = url;
-      imagePreview.classList.remove('d-none');
     } else {
       imagePreview.src = './assets/img/placeholder.svg';
-      imagePreview.classList.add('d-none');
     }
   });
 
