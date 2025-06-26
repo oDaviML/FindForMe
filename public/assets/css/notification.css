@@ -1,0 +1,415 @@
+/* Estilos para notificações */
+
+/* Estilização do ícone de notificação */
+#notification-icon {
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#notification-icon:hover {
+  background-color: rgba(238, 113, 10, 0.15);
+  transform: scale(1.05);
+}
+
+#notification-icon i {
+  font-size: 1.3rem;
+  color: var(--text-secondary-color);
+}
+
+/* Badge animado para notificações não lidas */
+#notification-badge {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(50%, -50%) scale(1);
+  }
+}
+
+/* Indicador de notificações não lidas */
+#notification-icon.has-unread::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px rgba(238, 113, 10, 0.3);
+}
+
+/* Estilização do dropdown */
+#notification-dropdown {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 0;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+/* Cabeçalho do dropdown de notificações */
+.notification-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  background-color: #f8f9fa;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.notification-header h6 {
+  margin-bottom: 0;
+  font-weight: 600;
+  color: var(--text-secondary-color);
+  display: flex;
+  align-items: center;
+}
+
+.notification-header h6::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.notification-clear-all {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.notification-clear-all:hover {
+  background-color: rgba(238, 113, 10, 0.1);
+  text-decoration: none;
+}
+
+/* Lista de notificações */
+.notification-list {
+  max-height: 350px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+/* Item de notificação */
+.notification-item {
+  padding: 0;
+  transition: all 0.25s ease;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  position: relative;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item:hover {
+  background-color: rgba(238, 113, 10, 0.08);
+}
+
+.notification-item:active {
+  transform: scale(0.98);
+}
+
+.notification-link {
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.notification-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.notification-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  margin-right: 14px;
+  background-color: rgba(238, 113, 10, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.notification-icon i {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.notification-text {
+  flex: 1;
+  position: relative;
+}
+
+/* Badge indicador do tipo de notificação */
+.notification-text::before {
+  content: attr(data-category);
+  position: absolute;
+  top: -3px;
+  right: 0;
+  font-size: 0.65rem;
+  font-weight: 600;
+  background-color: rgba(238, 113, 10, 0.2);
+  color: var(--primary-color);
+  padding: 2px 8px;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.notification-item:hover .notification-text::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notification-title {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: var(--text-primary-color);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notification-message {
+  font-size: 0.8rem;
+  color: var(--text-secondary-color);
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.notification-time {
+  font-size: 0.7rem;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+}
+
+.notification-time::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background-color: #6c757d;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+/* Item não lido */
+.notification-item.unread .notification-title {
+  font-weight: 600;
+}
+
+.notification-item.unread {
+  background-color: rgba(238, 113, 10, 0.08);
+}
+
+.notification-item.unread::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    rgba(238, 113, 10, 0.5)
+  );
+  border-radius: 0 2px 2px 0;
+}
+
+/* Status pills dentro das notificações */
+.notification-status {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+
+.status-found {
+  background-color: rgba(25, 135, 84, 0.1);
+  color: #198754;
+}
+
+.status-lost {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+.status-returned {
+  background-color: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+}
+
+/* Estado vazio */
+.notification-empty {
+  padding: 30px 20px;
+  text-align: center;
+  color: #6c757d;
+}
+
+.notification-empty i {
+  font-size: 2.5rem;
+  color: #dee2e6;
+  margin-bottom: 15px;
+  display: block;
+  opacity: 0.7;
+}
+
+.notification-empty p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+/* Footer do dropdown */
+.notification-footer {
+  padding: 12px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  background-color: #f8f9fa;
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+}
+
+.notification-footer a {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.notification-footer a:hover {
+  background-color: rgba(238, 113, 10, 0.1);
+  text-decoration: none;
+}
+
+/* Efeito de contagem no ícone quando há muitas notificações */
+.notification-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 600;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(30%, -30%);
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Efeito de ripple ao clicar */
+.notification-item .notification-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(238, 113, 10, 0.1);
+  border-radius: 50%;
+  opacity: 1;
+  pointer-events: none;
+  animation: ripple 0.6s ease-out;
+  z-index: 0;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Corrigindo webkit-line-clamp */
+.notification-message {
+  line-clamp: 2;
+}
+
+/* Adicionando scroll personalizado no dropdown */
+.notification-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.notification-list::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}
+
+/* Animação de entrada das notificações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification-item {
+  animation: fadeIn 0.3s ease-out forwards;
+}

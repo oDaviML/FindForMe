@@ -19,6 +19,8 @@
     />
     <!-- Css base -->
     <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <link rel="stylesheet" href="./assets/css/notification.css" />
     <link rel="stylesheet" href="./assets/css/detalhes.css" />
   </head>
   <body>
@@ -103,6 +105,28 @@
                 </div>
               </div>
 
+              <!-- Seção de informações do dono (visível apenas para itens devolvidos) -->
+              <div id="owner-info-section" class="detail-item d-none">
+                <div class="detail-label">Devolvido para</div>
+                <div id="item-owner" class="detail-value">
+                  <div class="d-flex align-items-center">
+                    <div class="author-avatar me-2 bg-success bg-opacity-10">
+                      <i class="ri-user-received-fill text-success"></i>
+                    </div>
+                    <div>
+                      <div id="owner-name" class="fw-semibold"></div>
+                      <div class="d-flex align-items-center">
+                        <small
+                          id="owner-type"
+                          class="badge rounded-pill bg-success bg-opacity-10 text-success me-2"
+                        ></small>
+                        <small id="owner-contact" class="text-muted"></small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="mt-4">
                 <button id="contact-button" class="btn btn-primary w-100">
                   <i class="ri-chat-3-line me-2"></i> Entrar em contato
@@ -173,8 +197,8 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
-    <!-- Script de detalhes -->
     <script type="module" src="./assets/js/detalhes.js"></script>
     <script type="module" src="./assets/js/navbar.js"></script>
+    <script type="module" src="./assets/js/notificacao.js"></script>
   </body>
 </html>
