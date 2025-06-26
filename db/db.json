@@ -21,14 +21,14 @@
     {
       "id": 3,
       "name": "Carlos Pereira",
-      "email": "teste@example.com",
+      "email": "teste@teste.com",
       "password": "carlospereira123",
       "phone": "11998765432",
       "createdAt": "2025-05-03T09:15:00.000Z",
       "updatedAt": "2025-05-03T09:15:00.000Z"
     },
     {
-      "name": "Davi Martisn",
+      "name": "Davi Martins",
       "email": "teste@example.com",
       "phone": "31987733314",
       "password": "123456",
@@ -62,6 +62,41 @@
       "id": 5,
       "name": "Outros",
       "createdAt": "2025-04-01T10:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "name": "Livros",
+      "createdAt": "2025-04-01T10:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "name": "Instrumentos Musicais",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "name": "Chaves e Chaveiros",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "name": "Equipamentos Esportivos",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "name": "Mochilas e Bolsas",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 11,
+      "name": "Joias e Bijuterias",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 12,
+      "name": "Medicamentos e Itens de Saúde",
+      "createdAt": "2025-04-15T10:00:00.000Z"
     }
   ],
   "locations": [
@@ -82,6 +117,48 @@
       "name": "Estacionamento",
       "description": "Estacionamento principal",
       "createdAt": "2025-04-01T10:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Sala de aula",
+      "description": "Sala de aula",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "name": "Banheiro",
+      "description": "Banheiro masculino e feminino",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "name": "Laboratórios",
+      "description": "Laboratórios de química, física e biologia",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "name": "Quadras Esportivas",
+      "description": "Quadras, academia e piscina da universidade",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "name": "Auditório Principal",
+      "description": "Auditório para eventos e palestras",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "name": "Capela",
+      "description": "Área externa para convivência dos alunos",
+      "createdAt": "2025-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "name": "Prédio Administrativo",
+      "description": "Secretaria, reitoria e departamentos administrativos",
+      "createdAt": "2025-04-15T10:00:00.000Z"
     }
   ],
   "items": [
@@ -440,7 +517,7 @@
       "title": "Item semelhante encontrado",
       "message": "Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!",
       "relatedItemId": 19,
-      "read": false,
+      "read": true,
       "createdAt": "2025-06-26T18:25:35.628Z",
       "id": 9
     }
