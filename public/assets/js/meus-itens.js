@@ -1,4 +1,5 @@
 import { getLoggedUser } from './auth.js';
+import { showToast } from './toast.js';
 
 $(document).ready(function () {
   const user = getLoggedUser();
@@ -265,50 +266,7 @@ async function saveItemChanges() {
   }
 }
 
-// Função para exibir mensagens toast personalizadas
-function showToast(message, type = 'success') {
-  // Cria o container de toasts se não existir
-  if (!$('#toast-container').length) {
-    $('body').append(`
-      <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1500"></div>
-    `);
-  }
-
-  // Gera ID único para o toast
-  const toastId = 'toast-' + Date.now();
-
-  // Cria o toast com a cor apropriada baseada no tipo
-  const bgClass =
-    type === 'success'
-      ? 'bg-success'
-      : type === 'danger'
-        ? 'bg-danger'
-        : 'bg-info';
-
-  // Adiciona o toast ao container
-  $('#toast-container').append(`
-    <div id="${toastId}" class="toast align-items-center ${bgClass} text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body">
-          ${message}
-        </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-    </div>
-  `);
-
-  // Inicializa e mostra o toast
-  const toastElement = document.getElementById(toastId);
-  const toast = new bootstrap.Toast(toastElement, {
-    delay: 3000,
-  });
-  toast.show();
-
-  // Remove o toast do DOM após ele ser escondido
-  $(toastElement).on('hidden.bs.toast', function () {
-    $(this).remove();
-  });
-}
+// A função showToast foi movida para toast.js e importada no início do arquivo
 
 // Funções utilitárias para exibir o status do item
 function getBadgeClass(status) {

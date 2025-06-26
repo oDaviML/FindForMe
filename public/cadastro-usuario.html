@@ -22,9 +22,6 @@
     <link rel="stylesheet" href="./assets/css/login-register.css" />
   </head>
   <body>
-    <!-- Barra de navegação e menu -->
-    <header id="header-container"></header>
-
     <!-- Conteúdo principal -->
     <div class="register-container">
       <div class="card shadow-sm">
@@ -82,53 +79,18 @@
       </div>
     </div>
 
-    <script>
-      const registerForm = document.getElementById('registerForm');
-
-      registerForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        const createdAt = new Date().toISOString();
-        const updatedAt = createdAt;
-
-        try {
-          const response = await fetch('http://localhost:3000/users', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name,
-              email,
-              phone,
-              password,
-              createdAt,
-              updatedAt,
-            }),
-          });
-
-          if (response.ok) {
-            alert('Usuário registrado com sucesso!');
-            window.location.href = 'login-usuario.html';
-          } else {
-            alert('Erro ao registrar. Tente novamente.');
-          }
-        } catch (error) {
-          console.error('Erro:', error);
-          alert('Erro ao conectar com o servidor.');
-        }
-      });
-    </script>
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
       crossorigin="anonymous"
     ></script>
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./assets/js/cadastro-usuario.js"></script>
   </body>
 </html>

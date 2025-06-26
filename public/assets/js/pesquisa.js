@@ -1,3 +1,5 @@
+import { showToast } from './toast.js';
+
 // Variáveis globais
 let items = [];
 let categories = [];
@@ -227,7 +229,7 @@ function handleClaimItem() {
   // Aqui você pode adicionar a lógica para reivindicar o item
   // Por exemplo, abrir um formulário ou enviar uma requisição para a API
 
-  alert(`Item ${itemId} será reivindicado.`);
+  showToast(`Item ${itemId} será reivindicado.`, 'info');
 
   // Fechar o modal após a reivindicação
   const modal = bootstrap.Modal.getInstance(

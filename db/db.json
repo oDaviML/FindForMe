@@ -26,6 +26,15 @@
       "phone": "11998765432",
       "createdAt": "2025-05-03T09:15:00.000Z",
       "updatedAt": "2025-05-03T09:15:00.000Z"
+    },
+    {
+      "name": "Davi Martisn",
+      "email": "teste@example.com",
+      "phone": "31987733314",
+      "password": "123456",
+      "createdAt": "2025-06-26T02:28:26.088Z",
+      "updatedAt": "2025-06-26T02:28:26.088Z",
+      "id": 4
     }
   ],
   "categories": [
