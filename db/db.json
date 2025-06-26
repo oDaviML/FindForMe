@@ -455,7 +455,7 @@
       "userId": 1,
       "title": "Item semelhante encontrado",
       "message": "Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!",
-      "read": true,
+      "read": false,
       "createdAt": "2025-06-17T21:55:45.009Z",
       "id": 2
     },
