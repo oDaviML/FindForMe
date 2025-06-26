@@ -25,10 +25,21 @@
     <header id="header-container"></header>
 
     <!-- Conteúdo principal -->
-    <div class="container mt-4">
-      <h1 class="mb-4">Meus Itens Cadastrados</h1>
-      <div id="items-list" class="row">
-        <!-- Itens do usuário serão inseridos aqui -->
+    <div class="container content-wrapper">
+      <div class="row mb-3">
+        <div class="col">
+          <h1 class="page-title">Meus Itens</h1>
+          <p class="page-description">
+            Visualize e gerencie todos os itens que você cadastrou como perdidos
+            ou encontrados. Para registrar um novo item perdido,
+            <a href="cadastro-item-perdido.html">clique aqui</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Lista de itens do usuário -->
+      <div class="row g-4" id="items-list">
+        <!-- Itens do usuário serão inseridos aqui via JS -->
       </div>
     </div>
 
