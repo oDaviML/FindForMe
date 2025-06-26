@@ -102,13 +102,7 @@ function showError() {
   $('#error-message').removeClass('d-none');
 }
 
-// Reivindicar
-function handleClaimItem() {
-  showToast(
-    'Funcionalidade de reivindicação será implementada em breve!',
-    'info'
-  );
-}
+// Função removida - Sem funcionalidade de reivindicação
 
 // Mostrar informações de contato no modal
 function showContactInfo(user) {
@@ -119,30 +113,71 @@ function showContactInfo(user) {
 
   const $modalBody = $('#contactModalBody');
   const $emailButton = $('#emailButton');
+  const $whatsappButton = $('#whatsappButton');
 
-  // Atualiza o modal com as informações do usuário
+  // Atualiza o modal com as informações do usuário e cards de contato
   $modalBody.html(`
     <div class="text-center mb-4">
       <div class="author-avatar mx-auto mb-3">
         <i class="ri-user-fill"></i>
       </div>
       <h5 class="mb-1">${user.name || 'Usuário anônimo'}</h5>
-      ${user.email ? `<p class="text-muted mb-2">${user.email}</p>` : ''}
-      ${user.phone ? `<p class="mb-0"><i class="ri-phone-line me-2"></i>${user.phone}</p>` : ''}
     </div>
+    
+    <div class="row">
+      ${
+        user.phone
+          ? `
+      <div class="col-md-6 mb-3">
+        <div class="card contact-card">
+          <div class="card-body text-center">
+            <div class="contact-icon mb-3">
+              <i class="ri-whatsapp-line"></i>
+            </div>
+            <h6 class="card-title">WhatsApp</h6>
+            <p class="card-text text-muted">${user.phone}</p>
+            <a href="https://wa.me/${user.phone.replace(/\D/g, '')}" target="_blank" class="btn btn-success w-100">
+              <i class="ri-whatsapp-line me-2"></i>Enviar Mensagem
+            </a>
+          </div>
+        </div>
+      </div>
+      `
+          : ''
+      }
+      
+      ${
+        user.email
+          ? `
+      <div class="col-md-${user.phone ? '6' : '12'} mb-3">
+        <div class="card contact-card">
+          <div class="card-body text-center">
+            <div class="contact-icon mb-3">
+              <i class="ri-mail-line"></i>
+            </div>
+            <h6 class="card-title">E-mail</h6>
+            <p class="card-text text-muted">${user.email}</p>
+            <a href="mailto:${user.email}?subject=Encontrei seu item no FindForMe" class="btn btn-primary w-100">
+              <i class="ri-mail-line me-2"></i>Enviar E-mail
+            </a>
+          </div>
+        </div>
+      </div>
+      `
+          : ''
+      }
+    </div>
+    
+    ${
+      !user.phone && !user.email
+        ? `
+    <div class="alert alert-warning">
+      <i class="ri-information-line me-2"></i>Este usuário não forneceu informações de contato.
+    </div>
+    `
+        : ''
+    }
   `);
-
-  // Configura o botão de email se disponível
-  if (user.email) {
-    $emailButton
-      .attr(
-        'href',
-        `mailto:${user.email}?subject=Encontrei seu item no FindForMe`
-      )
-      .removeClass('d-none');
-  } else {
-    $emailButton.addClass('d-none');
-  }
 
   $contactModal.show();
 }
@@ -155,9 +190,6 @@ $(document).ready(() => {
     showError();
     return;
   }
-
-  // Reivindicar
-  $('#claim-item').on('click', handleClaimItem);
 
   // Contato
   $('#contact-button').on('click', (e) => {

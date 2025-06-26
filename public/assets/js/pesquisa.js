@@ -71,8 +71,8 @@ function setupEventListeners() {
   // Botão limpar filtros
   $('#clear-filters').on('click', clearFilters);
 
-  // Botão reivindicar item
-  $(document).on('click', '#claim-item', handleClaimItem);
+  // Botão entrar em contato
+  $(document).on('click', '#contact-item', handleContactItem);
 }
 
 // Renderiza os filtros de categoria
@@ -218,26 +218,38 @@ function renderItems() {
 
 // Mostra os detalhes do item em uma nova página
 function showItemDetails(item) {
+  // Armazenar o ID do item na URL e redirecionar
   window.location.href = `detalhes.html?id=${item.id}`;
 }
 
-// Manipula o clique no botão de reivindicar item
-function handleClaimItem() {
-  const itemId = $(this).data('item-id');
+// Mostra os detalhes do item em um modal
+function showItemModal(item) {
+  const modal = document.getElementById('itemModal');
+  $(modal).data('item-id', item.id);
+
+  // Formatação e preenchimento do modal conforme necessário
+  // ...
+
+  // Exibir modal
+  const modalInstance = new bootstrap.Modal(modal);
+  modalInstance.show();
+}
+
+// Manipula o clique no botão de contato para direcionar à página de detalhes
+function handleContactItem() {
+  const itemId = $('#itemModal').data('item-id');
   if (!itemId) return;
 
-  // Aqui você pode adicionar a lógica para reivindicar o item
-  // Por exemplo, abrir um formulário ou enviar uma requisição para a API
-
-  showToast(`Item ${itemId} será reivindicado.`, 'info');
-
-  // Fechar o modal após a reivindicação
+  // Redirecionar para a página de detalhes onde o usuário poderá entrar em contato
   const modal = bootstrap.Modal.getInstance(
     document.getElementById('itemModal')
   );
   if (modal) {
     modal.hide();
   }
+
+  // Redirecionar para a página de detalhes
+  window.location.href = `detalhes.html?id=${itemId}`;
 }
 
 // Limpa todos os filtros
