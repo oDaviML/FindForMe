@@ -1,0 +1,34 @@
+/* Estilos para a página Meus Itens */
+.item-card {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Status badges - estilos consistentes com a página de detalhes */
+.status-badge {
+  font-size: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-found {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-lost {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status-returned {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
