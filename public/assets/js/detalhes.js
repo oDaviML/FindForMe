@@ -1,3 +1,5 @@
+import { showToast } from './toast.js';
+
 // Constantes
 const API_BASE_URL = 'http://localhost:3000';
 const STATUS_LABELS = {
@@ -102,13 +104,16 @@ function showError() {
 
 // Reivindicar
 function handleClaimItem() {
-  alert('Funcionalidade de reivindicação será implementada em breve!');
+  showToast(
+    'Funcionalidade de reivindicação será implementada em breve!',
+    'info'
+  );
 }
 
 // Mostrar informações de contato no modal
 function showContactInfo(user) {
   if (!user) {
-    alert('Não foi possível identificar o dono deste item.');
+    showToast('Não foi possível identificar o dono deste item.', 'warning');
     return;
   }
 
@@ -160,7 +165,7 @@ $(document).ready(() => {
     if (currentItem?.reportedByUser) {
       showContactInfo(currentItem.reportedByUser);
     } else {
-      alert('Não foi possível identificar o dono deste item.');
+      showToast('Não foi possível identificar o dono deste item.', 'warning');
     }
   });
 

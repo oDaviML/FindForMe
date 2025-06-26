@@ -1,4 +1,5 @@
 import { getLoggedUser } from './auth.js';
+import { showToast } from './toast.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const catSel = document.getElementById('category');
@@ -34,8 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     } catch (error) {
       console.error('Erro ao carregar categorias ou locais:', error);
-      alert(
-        'Erro ao carregar categorias ou locais. Tente novamente mais tarde.'
+      showToast(
+        'Erro ao carregar categorias ou locais. Tente novamente mais tarde.',
+        'danger'
       );
     }
   }
@@ -47,10 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = this.value.trim();
     if (url) {
       imagePreview.src = url;
-      imagePreview.classList.remove('d-none');
     } else {
       imagePreview.src = './assets/img/placeholder.svg';
-      imagePreview.classList.add('d-none');
     }
   });
 
@@ -60,8 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const user = getLoggedUser();
     if (!user) {
-      alert('Você precisa estar logado para registrar um item perdido.');
-      window.location.href = 'login-usuario.html';
+      showToast(
+        'Você precisa estar logado para registrar um item perdido.',
+        'warning'
+      );
+      setTimeout(() => {
+        window.location.href = 'login-usuario.html';
+      }, 1500);
       return;
     }
 
@@ -103,13 +108,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!res.ok) throw new Error('Erro ao registrar o item.');
 
-      alert('Item perdido registrado com sucesso!');
+      showToast('Item perdido registrado com sucesso!', 'success');
       form.reset();
       imagePreview.src = './assets/img/placeholder.svg';
       imagePreview.classList.add('d-none');
+
+      // Redireciona após um breve intervalo
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1500);
     } catch (error) {
       console.error(error);
-      alert('Erro ao registrar o item.');
+      showToast('Erro ao registrar o item.', 'danger');
     }
   });
 });

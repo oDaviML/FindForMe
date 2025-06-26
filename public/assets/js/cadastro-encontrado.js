@@ -1,4 +1,5 @@
 import { getLoggedUser } from './auth.js';
+import { showToast } from './toast.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const catSel = document.getElementById('category');
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     } catch (err) {
       console.error('Erro ao carregar categorias/locais:', err);
-      alert('Erro ao carregar categorias e locais.');
+      showToast('Erro ao carregar categorias e locais.', 'danger');
     }
   }
 
@@ -45,10 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = this.value.trim();
     if (url) {
       imagePreview.src = url;
-      imagePreview.classList.remove('d-none');
     } else {
       imagePreview.src = './assets/img/placeholder.svg';
-      imagePreview.classList.add('d-none');
     }
   });
 
@@ -57,8 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const user = getLoggedUser();
     if (!user) {
-      alert('Você precisa estar logado para registrar um item encontrado.');
-      window.location.href = 'login-usuario.html';
+      showToast(
+        'Você precisa estar logado para registrar um item encontrado.',
+        'warning'
+      );
+      setTimeout(() => {
+        window.location.href = 'login-usuario.html';
+      }, 1500);
       return;
     }
 
@@ -144,11 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
         );
       }
 
-      alert('Item encontrado registrado com sucesso!');
-      window.location.href = 'index.html';
+      showToast('Item encontrado registrado com sucesso!', 'success');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1500);
     } catch (error) {
       console.error(error);
-      alert('Erro ao registrar o item encontrado.');
+      showToast('Erro ao registrar o item encontrado.', 'danger');
     }
   });
 });

@@ -1,28 +1,43 @@
 import { getLoggedUser } from './auth.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const userInfo = document.getElementById('user-info');
-  const user = getLoggedUser();
+$(document).ready(function () {
+  // Carrega o header reutilizável
+  $('#header-container').load('header.html', function () {
+    // Define o título da página dinamicamente
+    const pageTitle = document.title.split('-')[1]?.trim() || 'FindForMe';
+    $('#page-title-placeholder').text(pageTitle);
 
-  if (!userInfo) return;
+    setupUserMenu();
+  });
+});
+
+function setupUserMenu() {
+  const user = getLoggedUser();
+  const userMenu = $('#user-menu');
 
   if (user) {
-    userInfo.innerHTML = `
-      <span class="me-2 text-dark fw-semibold" title="${user.email}">
-        ${user.name.split(' ')[0]}
-      </span>
-      <button id="logoutBtn" class="btn btn-outline-secondary btn-sm">Sair</button>
-    `;
+    userMenu.html(`
+      <button class="btn border-0 dropdown-toggle d-flex align-items-center" type="button" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="ri-user-line me-2"></i>
+        <span class="fw-semibold">${user.name.split(' ')[0]}</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuButton">
+        <li><a class="dropdown-item" href="meus-itens.html">Meus Itens</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><button class="dropdown-item" id="logoutBtn">Sair</button></li>
+      </ul>
+    `);
 
-    document.getElementById('logoutBtn').addEventListener('click', () => {
+    $('#logoutBtn').on('click', () => {
       localStorage.removeItem('loggedUser');
-      location.reload();
+      window.location.href = 'login-usuario.html';
     });
   } else {
-    userInfo.innerHTML = `
+    userMenu.html(`
       <a href="login-usuario.html" class="btn btn-outline-dark btn-sm">
+        <i class="ri-login-box-line me-1"></i>
         Entrar
       </a>
-    `;
+    `);
   }
-});
+}

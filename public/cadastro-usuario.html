@@ -22,106 +22,7 @@
     <link rel="stylesheet" href="./assets/css/login-register.css" />
   </head>
   <body>
-    <!-- Barra de navegação superior -->
-    <nav class="navbar navbar-light bg-white py-2">
-      <div class="container-fluid">
-        <!-- Botão do menu hamburger (sempre visível) -->
-        <button
-          class="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-        >
-          <i class="ri-menu-line"></i>
-        </button>
-
-        <!-- Título da página centralizado -->
-        <span class="navbar-text mx-auto page-title">Registre-se!</span>
-
-        <!-- Ícone de notificação -->
-        <div class="d-flex">
-          <button class="btn border-0">
-            <i class="ri-notification-line"></i>
-          </button>
-          <div id="user-info" class="d-flex align-items-center"></div>
-        </div>
-
-        <!-- Menu Hamburguer Collapse -->
-        <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <!-- Menu de itens -->
-                <a href="index.html" class="menu-item">
-                  <i class="ri-home-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Página inicial</h3>
-                    <p class="menu-item-description">
-                      Volte ao catálogo de itens
-                    </p>
-                  </div>
-                </a>
-                <div class="menu-divider"></div>
-
-                <a href="pesquisa.html" class="menu-item">
-                  <i class="ri-filter-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Pesquisar itens</h3>
-                    <p class="menu-item-description">
-                      Use filtros para facilitar a busca
-                    </p>
-                  </div>
-                </a>
-                <div class="menu-divider"></div>
-
-                <a href="cadastro-item-perdido.html" class="menu-item">
-                  <i class="ri-upload-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Cadastrar item</h3>
-                    <p class="menu-item-description">
-                      Cadastrar item que foi perdido
-                    </p>
-                  </div>
-                </a>
-                <div class="menu-divider"></div>
-
-                <a href="cadastro-item-encontrado.html" class="menu-item">
-                  <i class="ri-checkbox-circle-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Reportar item encontrado</h3>
-                    <p class="menu-item-description">
-                      Que bom que você encontrou ;)
-                    </p>
-                  </div>
-                </a>
-                <div class="menu-divider"></div>
-
-                <a href="#" class="menu-item">
-                  <i class="ri-map-pin-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Itens já encontrados</h3>
-                    <p class="menu-item-description">
-                      E quem os recuperou como seus
-                    </p>
-                  </div>
-                </a>
-                <div class="menu-divider"></div>
-
-                <a href="relatorio.html" class="menu-item">
-                  <i class="ri-bar-chart-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Relatório de itens</h3>
-                    <p class="menu-item-description">
-                      Estatísticas dos achados e perdidos
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <!-- Conteúdo principal -->
     <div class="register-container">
       <div class="card shadow-sm">
         <h2 class="text-center mb-4">Registrar</h2>
@@ -178,53 +79,18 @@
       </div>
     </div>
 
-    <script>
-      const registerForm = document.getElementById('registerForm');
-
-      registerForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        const createdAt = new Date().toISOString();
-        const updatedAt = createdAt;
-
-        try {
-          const response = await fetch('http://localhost:3000/users', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name,
-              email,
-              phone,
-              password,
-              createdAt,
-              updatedAt,
-            }),
-          });
-
-          if (response.ok) {
-            alert('Usuário registrado com sucesso!');
-            window.location.href = 'login-usuario.html';
-          } else {
-            alert('Erro ao registrar. Tente novamente.');
-          }
-        } catch (error) {
-          console.error('Erro:', error);
-          alert('Erro ao conectar com o servidor.');
-        }
-      });
-    </script>
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
       crossorigin="anonymous"
     ></script>
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./assets/js/cadastro-usuario.js"></script>
   </body>
 </html>

@@ -1,3 +1,5 @@
+import { showToast } from './toast.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
 
@@ -17,15 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = users[0];
         localStorage.setItem('loggedUser', JSON.stringify(user));
 
-        alert('Login bem-sucedido!');
-        window.location.href = 'index.html';
+        showToast('Login bem-sucedido!', 'success');
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 500);
       } else {
-        alert('E-mail ou senha incorretos!');
+        showToast('E-mail ou senha incorretos!', 'danger');
       }
     } catch (error) {
       console.error('Erro na requisição:', error);
-      alert(
-        'Erro ao tentar fazer login. Verifique sua conexão com o servidor.'
+      showToast(
+        'Erro ao tentar fazer login. Verifique sua conexão com o servidor.',
+        'danger'
       );
     }
   });

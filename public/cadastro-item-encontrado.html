@@ -19,134 +19,59 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-light bg-white py-2">
-      <div class="container-fluid">
-        <button
-          class="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-        >
-          <i class="ri-menu-line"></i>
-        </button>
+    <!-- Barra de navegação e menu -->
+    <header id="header-container"></header>
 
-        <!-- Título da página centralizado -->
-        <span class="navbar-text mx-auto page-title"
-          >Registrar item encontrado</span
-        >
-
-        <!-- Ícone de notificação -->
-        <div class="d-flex">
-          <button
-            class="btn border-0 position-relative"
-            id="notification-icon"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style="background: transparent"
-          >
-            <i class="ri-notification-line"></i>
-            <span
-              class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-none"
-              id="notification-badge"
-            ></span>
-          </button>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            id="notification-dropdown"
-            style="
-              min-width: 320px;
-              max-width: 400px;
-              max-height: 400px;
-              overflow-y: auto;
-            "
-          ></ul>
-          <div id="user-info" class="d-flex align-items-center"></div>
-        </div>
-        <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
-          <a href="index.html" class="menu-item">
-            <i class="ri-home-line"></i>
-            <div class="menu-item-content">
-              <h3 class="menu-item-title">Página inicial</h3>
-              <p class="menu-item-description">Volte ao catálogo de itens</p>
-            </div>
-          </a>
-          <div class="menu-divider"></div>
-          <a href="pesquisa.html" class="menu-item">
-            <i class="ri-filter-line"></i>
-            <div class="menu-item-content">
-              <h3 class="menu-item-title">Pesquisar itens</h3>
-              <p class="menu-item-description">
-                Use filtros para facilitar a busca
-              </p>
-            </div>
-          </a>
-          <div class="menu-divider"></div>
-          <a href="cadastro-item-perdido.html" class="menu-item">
-            <i class="ri-upload-line"></i>
-            <div class="menu-item-content">
-              <h3 class="menu-item-title">Cadastrar item</h3>
-              <p class="menu-item-description">
-                Cadastrar item que foi perdido
-              </p>
-            </div>
-          </a>
-          <div class="menu-divider"></div>
-          <a href="cadastro-item-encontrado.html" class="menu-item">
-            <i class="ri-checkbox-circle-line"></i>
-            <div class="menu-item-content">
-              <h3 class="menu-item-title">Reportar item encontrado</h3>
-              <p class="menu-item-description">Que bom que você encontrou ;)</p>
-            </div>
-          </a>
-          <div class="menu-divider"></div>
-          <a href="#" class="menu-item">
-            <i class="ri-map-pin-line"></i>
-            <div class="menu-item-content">
-              <h3 class="menu-item-title">Itens já encontrados</h3>
-              <p class="menu-item-description">E quem os recuperou como seus</p>
-            </div>
-          </a>
-          <div class="menu-divider"></div>
-          <a href="relatorio.html" class="menu-item">
-            <i class="ri-bar-chart-line"></i>
-            <div class="menu-item-content">
-              <h3 class="menu-item-title">Relatório de itens</h3>
-              <p class="menu-item-description">
-                Estatísticas dos achados e perdidos
-              </p>
-            </div>
-          </a>
+    <!-- Conteúdo principal -->
+    <div class="container content-wrapper">
+      <div class="row mb-3">
+        <div class="col">
+          <h1 class="page-title">Registrar Item Encontrado</h1>
+          <p class="page-description">
+            Preencha o formulário abaixo com as informações do item que você
+            encontrou. Sua ação pode ajudar alguém a recuperar um item
+            importante.
+          </p>
         </div>
       </div>
-    </nav>
-    <div class="container-fluid py-4">
+
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
-          <div class="content-card">
-            <h2 class="main-title mb-3">Registrar Item Encontrado</h2>
-            <form id="found-item-form" autocomplete="off">
-              <div class="row g-4">
-                <div class="col-md-6">
+          <form
+            id="found-item-form"
+            class="bg-white p-4 rounded shadow-sm"
+            autocomplete="off"
+          >
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="mb-3">
                   <label for="name" class="form-label">Nome do item *</label>
                   <input type="text" class="form-control" id="name" required />
-                  <label for="description" class="form-label mt-3"
-                    >Descrição</label
-                  >
+                </div>
+
+                <div class="mb-3">
+                  <label for="description" class="form-label">Descrição</label>
                   <textarea
                     class="form-control"
                     id="description"
                     rows="3"
                   ></textarea>
-                  <label for="category" class="form-label mt-3"
-                    >Categoria *</label
-                  >
+                </div>
+
+                <div class="mb-3">
+                  <label for="category" class="form-label">Categoria *</label>
                   <select class="form-select" id="category" required></select>
-                  <label for="location" class="form-label mt-3"
+                </div>
+
+                <div class="mb-3">
+                  <label for="location" class="form-label"
                     >Local encontrado *</label
                   >
                   <select class="form-select" id="location" required></select>
-                  <label for="foundAt" class="form-label mt-3"
+                </div>
+
+                <div class="mb-3">
+                  <label for="foundAt" class="form-label"
                     >Data e hora que encontrou *</label
                   >
                   <input
@@ -156,34 +81,42 @@
                     required
                   />
                 </div>
-                <div
-                  class="col-md-6 d-flex flex-column align-items-center justify-content-center"
-                >
+              </div>
+              <div
+                class="col-md-6 d-flex flex-column align-items-center justify-content-center"
+              >
+                <div class="w-100 mb-3 text-center">
+                  <img
+                    id="imagePreview"
+                    src="./assets/img/placeholder.svg"
+                    class="img-fluid rounded shadow-sm"
+                    style="
+                      max-height: 250px;
+                      background: #f8f9fa;
+                      object-fit: contain;
+                    "
+                    alt="Preview da imagem"
+                  />
+                </div>
+                <div class="w-100 mb-2">
                   <label for="photoUrl" class="form-label"
                     >Link da imagem do item</label
                   >
                   <input
-                    class="form-control mb-2"
+                    class="form-control"
                     type="url"
                     id="photoUrl"
                     placeholder="https://exemplo.com/imagem.jpg"
                   />
-                  <img
-                    id="imagePreview"
-                    src="./assets/img/placeholder.svg"
-                    class="img-fluid rounded d-none"
-                    style="max-height: 220px; background: #f8f9fa"
-                    alt="Preview"
-                  />
                 </div>
               </div>
-              <div class="mt-4 text-end">
-                <button type="submit" class="btn btn-primary px-4">
-                  Cadastrar
-                </button>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="mt-4 text-end">
+              <button type="submit" class="btn btn-primary px-4">
+                Cadastrar
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

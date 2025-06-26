@@ -22,106 +22,8 @@
     <link rel="stylesheet" href="./assets/css/detalhes.css" />
   </head>
   <body>
-    <!-- Barra de navegação superior -->
-    <nav class="navbar navbar-light bg-white py-2">
-      <div class="container-fluid">
-        <!-- Botão do menu hamburger (sempre visível) -->
-        <button
-          class="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-        >
-          <i class="ri-menu-line"></i>
-        </button>
-
-        <!-- Título da página centralizado -->
-        <span class="navbar-text mx-auto page-title">Detalhes do Item</span>
-
-        <!-- Ícone de notificação -->
-        <div class="d-flex">
-          <button class="btn border-0">
-            <i class="ri-notification-line"></i>
-          </button>
-          <div id="user-info" class="d-flex align-items-center"></div>
-        </div>
-
-        <!-- Menu Hamburguer Collapse -->
-        <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <!-- Menu de itens -->
-                <a href="index.html" class="menu-item">
-                  <i class="ri-home-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Página inicial</h3>
-                    <p class="menu-item-description">
-                      Volte ao catálogo de itens
-                    </p>
-                  </div>
-                </a>
-                <div class="menu-divider"></div>
-
-                <a href="pesquisa.html" class="menu-item">
-                  <i class="ri-filter-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Pesquisar itens</h3>
-                    <p class="menu-item-description">
-                      Use filtros para facilitar a busca
-                    </p>
-                  </div>
-                </a>
-                <div class="menu-divider"></div>
-
-                <a href="cadastro-item-perdido.html" class="menu-item">
-                  <i class="ri-upload-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Cadastrar item</h3>
-                    <p class="menu-item-description">
-                      Cadastrar item que foi perdido
-                    </p>
-                  </div>
-                </a>
-                <div class="menu-divider"></div>
-
-                <a href="cadastro-item-encontrado.html" class="menu-item">
-                  <i class="ri-checkbox-circle-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Reportar item encontrado</h3>
-                    <p class="menu-item-description">
-                      Que bom que você encontrou ;)
-                    </p>
-                  </div>
-                </a>
-                <div class="menu-divider"></div>
-
-                <a href="#" class="menu-item">
-                  <i class="ri-map-pin-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Itens já encontrados</h3>
-                    <p class="menu-item-description">
-                      E quem os recuperou como seus
-                    </p>
-                  </div>
-                </a>
-                <div class="menu-divider"></div>
-
-                <a href="relatorio.html" class="menu-item">
-                  <i class="ri-bar-chart-line"></i>
-                  <div class="menu-item-content">
-                    <h3 class="menu-item-title">Relatório de itens</h3>
-                    <p class="menu-item-description">
-                      Estatísticas dos achados e perdidos
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <!-- Barra de navegação e menu -->
+    <header id="header-container"></header>
 
     <!-- Conteúdo principal -->
     <div class="container py-4">
@@ -281,7 +183,7 @@
       crossorigin="anonymous"
     ></script>
     <!-- Script de detalhes -->
-    <script src="./assets/js/detalhes.js"></script>
+    <script type="module" src="./assets/js/detalhes.js"></script>
     <script type="module" src="./assets/js/navbar.js"></script>
   </body>
 </html>

@@ -26,6 +26,15 @@
       "phone": "11998765432",
       "createdAt": "2025-05-03T09:15:00.000Z",
       "updatedAt": "2025-05-03T09:15:00.000Z"
+    },
+    {
+      "name": "Davi Martisn",
+      "email": "teste@example.com",
+      "phone": "31987733314",
+      "password": "123456",
+      "createdAt": "2025-06-26T02:28:26.088Z",
+      "updatedAt": "2025-06-26T02:28:26.088Z",
+      "id": 4
     }
   ],
   "categories": [
@@ -80,14 +89,14 @@
       "id": 1,
       "name": "Carteira com documentos",
       "description": "Carteira preta com CNH e cartões de crédito",
-      "locationId": 1,
+      "locationId": 2,
       "categoryId": 1,
-      "status": "found",
+      "status": "lost",
       "photoUrl": "/photos/item1.jpg",
       "reportedBy": 1,
       "foundAt": "2025-05-10T15:30:00.000Z",
       "createdAt": "2025-05-10T16:00:00.000Z",
-      "updatedAt": "2025-05-10T16:00:00.000Z"
+      "updatedAt": "2025-06-26T02:06:04.992Z"
     },
     {
       "id": 2,
@@ -103,32 +112,19 @@
       "updatedAt": "2025-05-11T14:00:00.000Z"
     },
     {
-      "id": 3,
-      "name": "Caderno de anotações",
-      "description": "Caderno espiral azul com anotações de matemática",
-      "locationId": 1,
-      "categoryId": 4,
-      "status": "found",
-      "photoUrl": "/photos/item3.jpg",
-      "reportedBy": 1,
-      "foundAt": "2025-05-12T09:00:00.000Z",
-      "createdAt": "2025-05-12T09:30:00.000Z",
-      "updatedAt": "2025-05-12T09:30:00.000Z"
-    },
-    {
       "id": 4,
       "name": "Guarda-chuva",
       "description": "Guarda-chuva preto automático",
       "locationId": 3,
       "categoryId": 5,
-      "status": "returned",
+      "status": "lost",
       "photoUrl": "/photos/item4.jpg",
       "reportedBy": 2,
       "foundAt": "2025-05-09T17:00:00.000Z",
       "claimedBy": 2,
       "returnedAt": "2025-05-13T10:15:00.000Z",
       "createdAt": "2025-05-09T17:30:00.000Z",
-      "updatedAt": "2025-05-13T10:15:00.000Z"
+      "updatedAt": "2025-06-26T02:05:48.964Z"
     },
     {
       "name": "Teste",
@@ -159,14 +155,14 @@
     {
       "name": "Teste2",
       "description": "dsdawdawdawd",
-      "categoryId": "3",
-      "locationId": "1",
-      "status": "lost",
+      "categoryId": 3,
+      "locationId": 3,
+      "status": "returned",
       "photoUrl": "/assets/imagens_itens/1750178928822_RobloxScreenShot20250307_150956802.png",
       "reportedBy": "1",
       "lostAt": "2025-06-05T03:02",
       "createdAt": "2025-06-17T16:48:48.822Z",
-      "updatedAt": "2025-06-17T16:48:48.822Z",
+      "updatedAt": "2025-06-26T02:06:16.399Z",
       "id": 7
     },
     {
@@ -278,12 +274,12 @@
       "description": "3123da",
       "locationId": 1,
       "categoryId": 1,
-      "status": "found",
+      "status": "returned",
       "photoUrl": "./assets/img/placeholder.svg",
       "reportedBy": 1,
       "foundAt": "2734-02-15T15:03:00.000Z",
       "createdAt": "2025-06-17T22:07:00.686Z",
-      "updatedAt": "2025-06-17T22:07:00.686Z",
+      "updatedAt": "2025-06-26T02:00:03.514Z",
       "id": 16
     },
     {
@@ -298,6 +294,19 @@
       "createdAt": "2025-06-17T22:10:56.669Z",
       "updatedAt": "2025-06-17T22:10:56.669Z",
       "id": 17
+    },
+    {
+      "name": "Garrafinha",
+      "description": "Teste",
+      "locationId": 1,
+      "categoryId": 5,
+      "status": "found",
+      "photoUrl": "https://cdn.awsli.com.br/600x1000/761/761999/produto/230668737259ae2d06c.jpg",
+      "reportedBy": 4,
+      "foundAt": "2025-06-27T17:30:00.000Z",
+      "createdAt": "2025-06-26T16:39:46.693Z",
+      "updatedAt": "2025-06-26T16:39:46.693Z",
+      "id": 18
     }
   ],
   "itemHistory": [
@@ -411,6 +420,15 @@
       "read": true,
       "createdAt": "2025-06-17T22:10:58.814Z",
       "id": 7
+    },
+    {
+      "userId": 1,
+      "title": "Item semelhante encontrado",
+      "message": "Um item semelhante ao que você perdeu foi encontrado. Veja os detalhes!",
+      "relatedItemId": 18,
+      "read": false,
+      "createdAt": "2025-06-26T16:39:46.999Z",
+      "id": 8
     }
   ],
   "reports": [
