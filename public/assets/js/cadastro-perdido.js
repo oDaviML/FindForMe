@@ -1,5 +1,6 @@
 import { getLoggedUser } from './auth.js';
 import { showToast } from './toast.js';
+import { checkUserCanCreateItem } from './flood-protection.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const catSel = document.getElementById('category');
@@ -67,6 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         window.location.href = 'login-usuario.html';
       }, 1500);
+      return;
+    }
+    
+    // Verifica se o usuário pode cadastrar um novo item (proteção contra flood)
+    const { canCreate, message } = await checkUserCanCreateItem(user.id);
+    if (!canCreate) {
+      showToast(message, 'warning');
       return;
     }
 
