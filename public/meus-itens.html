@@ -52,7 +52,7 @@
       aria-hidden="true"
       data-bs-backdrop="static"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="editItemModalLabel">Editar Item</h5>
@@ -65,51 +65,7 @@
           </div>
           <div class="modal-body">
             <form id="editItemForm">
-              <input type="hidden" id="edit-itemId" />
-              <div class="mb-3">
-                <label for="edit-itemName" class="form-label"
-                  >Nome do Item</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="edit-itemName"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="edit-itemDescription" class="form-label"
-                  >Descrição</label
-                >
-                <textarea
-                  class="form-control"
-                  id="edit-itemDescription"
-                  rows="3"
-                  required
-                ></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="edit-itemCategory" class="form-label"
-                  >Categoria</label
-                >
-                <select class="form-select" id="edit-itemCategory" required>
-                  <!-- Categorias serão carregadas dinamicamente -->
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="edit-itemLocation" class="form-label">Local</label>
-                <select class="form-select" id="edit-itemLocation" required>
-                  <!-- Locais serão carregados dinamicamente -->
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="edit-itemStatus" class="form-label">Status</label>
-                <select class="form-select" id="edit-itemStatus" required>
-                  <option value="lost">Perdido</option>
-                  <option value="found">Encontrado</option>
-                  <option value="returned">Devolvido</option>
-                </select>
-              </div>
+              <!-- O formulário será preenchido dinamicamente via JavaScript -->
             </form>
           </div>
           <div class="modal-footer">
@@ -118,7 +74,7 @@
               class="btn btn-secondary"
               data-bs-dismiss="modal"
             >
-              Fechar
+              Cancelar
             </button>
             <button type="button" class="btn btn-primary" id="saveChangesBtn">
               Salvar Alterações

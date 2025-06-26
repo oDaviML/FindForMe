@@ -188,6 +188,36 @@ async function loadItemDetailsIntoModal(itemId) {
           <option value="returned">Devolvido</option>
         </select>
       </div>
+      
+      <!-- Campos adicionais para devolução, inicialmente ocultos -->
+      <div id="returned-fields" style="display: none;">
+        <hr>
+        <h5>Informações do Dono</h5>
+        <div class="mb-3">
+          <label for="owner-name" class="form-label">Nome do Dono</label>
+          <input type="text" class="form-control" id="owner-name" />
+        </div>
+        <div class="mb-3">
+          <label for="owner-phone" class="form-label">Telefone</label>
+          <input type="tel" class="form-control" id="owner-phone" />
+        </div>
+        <div class="mb-3">
+          <label for="owner-email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="owner-email" />
+        </div>
+        <div class="mb-3">
+          <label for="owner-type" class="form-label">Tipo</label>
+          <select class="form-select" id="owner-type">
+            <option value="student">Estudante</option>
+            <option value="staff">Funcionário</option>
+            <option value="visitor">Visitante</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="return-notes" class="form-label">Observações</label>
+          <textarea class="form-control" id="return-notes" rows="2"></textarea>
+        </div>
+      </div>
     `);
 
     // Preencher os campos com os valores do item
@@ -202,6 +232,20 @@ async function loadItemDetailsIntoModal(itemId) {
     ]);
 
     $('#edit-itemStatus').val(item.status);
+
+    // Mostrar campos de devolução se o status for "returned"
+    if (item.status === 'returned') {
+      $('#returned-fields').show();
+    }
+
+    // Adicionar listener para mostrar/ocultar campos de devolução quando o status mudar
+    $('#edit-itemStatus').on('change', function () {
+      if ($(this).val() === 'returned') {
+        $('#returned-fields').show();
+      } else {
+        $('#returned-fields').hide();
+      }
+    });
 
     // Mostrar o título do modal com o nome do item
     $('#editItemModalLabel').text(`Editar Item: ${item.name}`);
@@ -235,6 +279,11 @@ async function saveItemChanges() {
       `http://localhost:3000/items/${itemId}`
     );
     const currentItem = await getItemResponse.json();
+    const newStatus = $('#edit-itemStatus').val();
+    const statusChanged = currentItem.status !== newStatus;
+
+    // Capturar informações do usuário logado
+    const loggedUser = getLoggedUser();
 
     // Manter os dados originais e atualizar apenas os campos do formulário
     const updatedItem = {
@@ -245,9 +294,19 @@ async function saveItemChanges() {
         parseInt($('#edit-itemCategory').val()) || currentItem.categoryId,
       locationId:
         parseInt($('#edit-itemLocation').val()) || currentItem.locationId,
-      status: $('#edit-itemStatus').val(),
+      status: newStatus,
       updatedAt: new Date().toISOString(),
     };
+
+    // Se o status foi alterado para "returned", adicionar informações do dono
+    if (newStatus === 'returned') {
+      updatedItem.ownerInfo = {
+        name: $('#owner-name').val(),
+        phone: $('#owner-phone').val(),
+        email: $('#owner-email').val(),
+        type: $('#owner-type').val(),
+      };
+    }
 
     const response = await fetch(`http://localhost:3000/items/${itemId}`, {
       method: 'PUT',
@@ -258,6 +317,76 @@ async function saveItemChanges() {
     });
 
     if (response.ok) {
+      // Se houve mudança de status, registrar no histórico
+      if (statusChanged) {
+        let notes = '';
+
+        // Criar mensagem específica para cada tipo de mudança de status
+        if (newStatus === 'returned') {
+          const ownerName = $('#owner-name').val();
+          const ownerType = $('#owner-type').val();
+          const returnNotes = $('#return-notes').val();
+
+          let ownerTypeText = '';
+          switch (ownerType) {
+            case 'student':
+              ownerTypeText = 'estudante';
+              break;
+            case 'staff':
+              ownerTypeText = 'funcionário';
+              break;
+            case 'visitor':
+              ownerTypeText = 'visitante';
+              break;
+          }
+
+          notes = `Item devolvido para ${ownerName} (${ownerTypeText})`;
+          if (returnNotes) {
+            notes += `. Obs: ${returnNotes}`;
+          }
+        } else if (newStatus === 'found') {
+          notes = 'Item marcado como encontrado';
+        } else if (newStatus === 'lost') {
+          notes = 'Item marcado como perdido';
+        }
+
+        // Obter o último ID do histórico para incrementar
+        const historyRes = await fetch(
+          'http://localhost:3000/itemHistory?_sort=id&_order=desc&_limit=1'
+        );
+        const lastHistory = await historyRes.json();
+        const newHistoryId = lastHistory.length > 0 ? lastHistory[0].id + 1 : 1;
+
+        // Criar nova entrada no histórico
+        const historyEntry = {
+          id: newHistoryId,
+          itemId: parseInt(itemId),
+          status: newStatus,
+          notes: notes,
+          changedBy: loggedUser.id,
+          createdAt: new Date().toISOString(),
+        };
+
+        // Se for devolução, adicionar informações do dono
+        if (newStatus === 'returned') {
+          historyEntry.ownerInfo = {
+            name: $('#owner-name').val(),
+            phone: $('#owner-phone').val(),
+            email: $('#owner-email').val(),
+            type: $('#owner-type').val(),
+          };
+        }
+
+        // Salvar no histórico
+        await fetch('http://localhost:3000/itemHistory', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(historyEntry),
+        });
+      }
+
       // Primeiro recarrega a lista de itens
       await loadUserItems(getLoggedUser().id);
 

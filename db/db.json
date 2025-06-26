@@ -300,63 +300,35 @@
       "description": "Teste",
       "locationId": 1,
       "categoryId": 5,
-      "status": "found",
+      "status": "returned",
       "photoUrl": "https://cdn.awsli.com.br/600x1000/761/761999/produto/230668737259ae2d06c.jpg",
       "reportedBy": 4,
       "foundAt": "2025-06-27T17:30:00.000Z",
       "createdAt": "2025-06-26T16:39:46.693Z",
-      "updatedAt": "2025-06-26T16:39:46.693Z",
-      "id": 18
+      "updatedAt": "2025-06-26T18:01:37.612Z",
+      "id": 18,
+      "ownerInfo": {
+        "name": "Jonas",
+        "phone": "31987733314",
+        "email": "teste@email.com.br",
+        "type": "student"
+      }
     }
   ],
   "itemHistory": [
     {
       "id": 1,
-      "itemId": 1,
-      "status": "found",
-      "notes": "Item encontrado na biblioteca e registrado no sistema",
-      "changedBy": 1,
-      "createdAt": "2025-05-10T16:00:00.000Z"
-    },
-    {
-      "id": 2,
-      "itemId": 2,
-      "status": "lost",
-      "notes": "Item reportado como perdido",
-      "changedBy": 2,
-      "createdAt": "2025-05-11T14:00:00.000Z"
-    },
-    {
-      "id": 3,
-      "itemId": 3,
-      "status": "found",
-      "notes": "Item encontrado na biblioteca",
-      "changedBy": 1,
-      "createdAt": "2025-05-12T09:30:00.000Z"
-    },
-    {
-      "id": 4,
-      "itemId": 4,
-      "status": "found",
-      "notes": "Item encontrado no estacionamento",
-      "changedBy": 1,
-      "createdAt": "2025-05-09T17:30:00.000Z"
-    },
-    {
-      "id": 5,
-      "itemId": 4,
-      "status": "claimed",
-      "notes": "Item identificado pelo dono",
-      "changedBy": 2,
-      "createdAt": "2025-05-13T10:00:00.000Z"
-    },
-    {
-      "id": 6,
-      "itemId": 4,
+      "itemId": 18,
       "status": "returned",
-      "notes": "Item devolvido ao proprietário",
-      "changedBy": 1,
-      "createdAt": "2025-05-13T10:15:00.000Z"
+      "notes": "Item devolvido para Jonas (estudante)",
+      "changedBy": 4,
+      "createdAt": "2025-06-26T18:01:37.682Z",
+      "ownerInfo": {
+        "name": "Jonas",
+        "phone": "31987733314",
+        "email": "teste@email.com.br",
+        "type": "student"
+      }
     }
   ],
   "notifications": [
