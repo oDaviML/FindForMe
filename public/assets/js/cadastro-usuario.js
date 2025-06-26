@@ -1,6 +1,3 @@
-/**
- * Funcionalidades para a página de cadastro de usuário
- */
 import { showToast } from './toast.js';
 
 document.addEventListener('DOMContentLoaded', () => {

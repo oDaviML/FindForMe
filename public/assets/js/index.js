@@ -1,4 +1,3 @@
-// Busca itens encontrados diretamente do db.json via json-server e renderiza na home
 let allItems = [];
 let categories = [];
 let locations = [];
